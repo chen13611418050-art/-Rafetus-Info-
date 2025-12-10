@@ -2,24 +2,33 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <title>中华斑鳖资料库 | Rafetus swinhoei Archive</title>
+  <title>中华斑鳖资料库｜Rafetus swinhoei</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="中华斑鳖资料库：全球最稀有淡水龟类 Rafetus swinhoei 的独立资料档案库，整理历史文献、标本记录、野外线索与最新研究进展。" />
+  <meta
+    name="description"
+    content="由个人独立维护的中华斑鳖（Rafetus swinhoei）中文资料库，整合物种百科、历史时间线、标本图库、新闻快讯、越南进程、历史档案与研究笔记。"
+  />
   <style>
-    /* ====== 全局样式 ====== */
+    /* ============ 全局基础样式：深色、简洁、学术感 ============ */
     :root {
-      --bg-main: #0f172a;       /* 深色顶部 */
-      --bg-body: #f3f4f6;       /* 浅灰背景 */
-      --bg-card: #ffffff;       /* 卡片背景 */
-      --text-main: #0f172a;     /* 主文字颜色 */
-      --text-muted: #6b7280;    /* 次要文字 */
-      --accent: #16a34a;        /* 绿色点缀 */
-      --accent-soft: #dcfce7;   /* 绿色浅底 */
-      --border-subtle: #e5e7eb; /* 卡片边框 */
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --shadow-soft: 0 12px 30px rgba(15, 23, 42, 0.10);
-      --max-width: 980px;
+      --bg-page: #020617;
+      --bg-main: #020617;
+      --bg-card: #020617;
+      --bg-card-soft: #020617;
+      --border: #1f2937;
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.16);
+      --accent-warm: #fbbf24;
+      --text-main: #e5e7eb;
+      --text-soft: #9ca3af;
+      --text-mute: #6b7280;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      --shadow-soft: 0 18px 50px rgba(0, 0, 0, 0.7);
+      --font-cn: system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC",
+        "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      --max-width: 1080px;
+      --transition: 0.18s ease-out;
     }
 
     * {
@@ -28,17 +37,20 @@
 
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Segoe UI", system-ui, -apple-system, "PingFang SC",
-        "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
-      background: var(--bg-body);
+      padding: 0;
+      font-family: var(--font-cn);
+      background: radial-gradient(circle at top, #020617 0, #000 55%, #020617 100%);
       color: var(--text-main);
-      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
     }
 
     a {
-      color: inherit;
+      color: var(--accent);
       text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
 
     img {
@@ -48,918 +60,1340 @@
 
     .page {
       min-height: 100vh;
+      padding: 20px 14px 60px;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
     }
 
-    main {
-      flex: 1;
-    }
-
-    .container {
+    .shell {
+      width: 100%;
       max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 18px;
     }
 
-    /* ====== 顶部导航 ====== */
-    .site-header {
-      background: radial-gradient(circle at top left, #1d283a 0, #020617 55%);
-      color: #e5e7eb;
-      padding: 18px 0 22px;
-      box-shadow: 0 12px 35px rgba(15, 23, 42, 0.45);
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(10px);
-    }
-
-    .header-inner {
+    /* ============ 顶部导航 ============ */
+    header {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 12px;
+      margin-bottom: 16px;
     }
 
     .brand {
       display: flex;
-      flex-direction: column;
-      gap: 2px;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #ffffff 0, #22c55e 13%, #0f172a 55%, #000 100%);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
     }
 
     .brand-title {
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
+      font-size: 18px;
+      font-weight: 650;
+      letter-spacing: 0.14em;
     }
 
     .brand-sub {
-      font-size: 12px;
-      color: #9ca3af;
+      font-size: 11px;
+      color: var(--text-mute);
     }
 
     .nav {
       display: flex;
-      gap: 12px;
-      font-size: 13px;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: flex-end;
     }
 
     .nav a {
-      padding: 6px 12px;
+      font-size: 11px;
+      padding: 6px 10px;
       border-radius: 999px;
-      color: #e5e7eb;
-      border: 1px solid transparent;
-      transition: all 0.18s ease;
-      white-space: nowrap;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.92);
+      color: var(--text-soft);
+      backdrop-filter: blur(8px);
+      transition: background var(--transition), border-color var(--transition),
+        color var(--transition), transform var(--transition);
     }
 
     .nav a:hover {
-      border-color: rgba(148, 163, 184, 0.7);
-      background: rgba(15, 23, 42, 0.9);
+      background: #020617;
+      border-color: var(--accent);
+      color: var(--text-main);
+      transform: translateY(-1px);
     }
 
-    /* ====== hero 区 ====== */
-    .hero {
-      background: radial-gradient(circle at top, #0f172a 0, #020617 60%);
-      color: #e5e7eb;
-      padding: 44px 0 38px;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.35);
-    }
-
-    .hero-inner {
-      display: grid;
-      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.8fr);
-      gap: 28px;
-      align-items: center;
-    }
-
-    @media (max-width: 768px) {
-      .hero-inner {
-        grid-template-columns: minmax(0, 1fr);
+    @media (max-width: 760px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
       }
 
       .nav {
-        display: none;
+        justify-content: flex-start;
       }
     }
 
-    .hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 11px;
-      padding: 3px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      background: rgba(15, 23, 42, 0.8);
-      margin-bottom: 12px;
-    }
-
-    .hero-tag-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
-    }
-
-    .hero-title {
-      font-size: clamp(28px, 4.2vw, 34px);
-      margin: 0 0 10px;
-      letter-spacing: 0.12em;
-    }
-
-    .hero-subtitle {
-      font-size: 15px;
-      color: #9ca3af;
-      margin: 0 0 18px;
-    }
-
-    .hero-meta {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      font-size: 11px;
-      color: #9ca3af;
+    /* ============ 顶部总览 + 搜索 ============ */
+    .hero {
+      background: linear-gradient(145deg, #020617 0, #020617 40%, #000 100%);
+      border-radius: var(--radius-xl);
+      padding: 20px 16px 16px;
+      border: 1px solid rgba(51, 65, 85, 0.9);
+      box-shadow: var(--shadow-soft);
       margin-bottom: 18px;
     }
 
-    .hero-meta span {
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.75);
-      border: 1px solid rgba(148, 163, 184, 0.6);
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .btn-primary,
-    .btn-ghost {
-      font-size: 13px;
-      padding: 7px 14px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.18s ease;
-      text-decoration: none;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #22c55e, #16a34a);
-      border-color: rgba(34, 197, 94, 0.85);
-      color: #052e16;
-      font-weight: 600;
-      box-shadow: 0 10px 25px rgba(22, 163, 74, 0.45);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 14px 32px rgba(22, 163, 74, 0.55);
-      filter: brightness(1.02);
-    }
-
-    .btn-ghost {
-      background: rgba(15, 23, 42, 0.8);
-      border-color: rgba(148, 163, 184, 0.7);
-      color: #e5e7eb;
-    }
-
-    .btn-ghost:hover {
-      background: rgba(15, 23, 42, 1);
-    }
-
-    .hero-note {
-      margin-top: 16px;
-      font-size: 12px;
-      color: #9ca3af;
-    }
-
-    .hero-note strong {
-      color: #e5e7eb;
-      font-weight: 600;
-    }
-
-    .hero-panel {
-      border-radius: 20px;
-      background: radial-gradient(circle at top left, #1e293b 0, #020617 60%);
-      border: 1px solid rgba(148, 163, 184, 0.55);
-      padding: 16px 16px 14px;
-      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.75);
-    }
-
-    .hero-panel-title {
-      font-size: 13px;
-      margin-bottom: 8px;
-      color: #e5e7eb;
-    }
-
-    .hero-panel-sub {
-      font-size: 11px;
-      color: #9ca3af;
-      margin-bottom: 10px;
-    }
-
-    .hero-stats {
+    .hero-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      margin-bottom: 10px;
+      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.3fr);
+      gap: 14px;
     }
 
-    .stat {
-      background: rgba(15, 23, 42, 0.85);
-      border-radius: 14px;
-      padding: 9px 10px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-    }
-
-    .stat-label {
-      font-size: 10px;
-      color: #9ca3af;
-    }
-
-    .stat-value {
-      font-size: 16px;
-      font-weight: 700;
-      margin-top: 2px;
-    }
-
-    .hero-quote {
-      margin-top: 8px;
-      font-size: 11px;
-      color: #9ca3af;
-      border-top: 1px dashed rgba(75, 85, 99, 0.8);
-      padding-top: 8px;
-    }
-
-    .hero-quote strong {
-      color: #e5e7eb;
-    }
-
-    /* ====== 主体区块基础 ====== */
-    .section {
-      padding: 28px 0;
-    }
-
-    .section-header {
-      margin-bottom: 16px;
-    }
-
-    .section-kicker {
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 4px;
-    }
-
-    .section-title {
-      font-size: 20px;
-      margin: 0 0 4px;
-    }
-
-    .section-desc {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin: 0;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
-      gap: 18px;
-    }
-
-    @media (max-width: 768px) {
-      .grid-2 {
+    @media (max-width: 860px) {
+      .hero-grid {
         grid-template-columns: minmax(0, 1fr);
       }
     }
 
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .badge-main {
+      padding: 4px 9px;
+      border-radius: 999px;
+      font-size: 11px;
+      border: 1px solid rgba(34, 197, 94, 0.7);
+      background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.28) 0, rgba(15, 23, 42, 0.98) 45%);
+      color: #e0ffef;
+    }
+
+    .badge-sub {
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--text-soft);
+    }
+
+    .hero-title {
+      margin: 0 0 4px;
+      font-size: 26px;
+      letter-spacing: 0.12em;
+    }
+
+    .hero-sub {
+      font-size: 13px;
+      color: var(--text-soft);
+      margin-bottom: 8px;
+    }
+
+    .hero-text {
+      font-size: 12px;
+      color: var(--text-soft);
+      line-height: 1.7;
+      margin-bottom: 8px;
+    }
+
+    .hero-text strong {
+      color: var(--accent-warm);
+    }
+
+    .hero-note {
+      font-size: 11px;
+      color: var(--text-mute);
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 10px;
+    }
+
     .card {
-      background: var(--bg-card);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-subtle);
-      padding: 16px 18px;
-      box-shadow: var(--shadow-soft);
+      background: #020617;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      padding: 10px 11px;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.7);
     }
 
     .card-header {
       display: flex;
-      align-items: baseline;
       justify-content: space-between;
-      margin-bottom: 8px;
-      gap: 8px;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 6px;
     }
 
     .card-title {
-      font-size: 15px;
+      font-size: 13px;
       font-weight: 600;
     }
 
-    .card-tag {
+    .card-sub {
       font-size: 11px;
-      padding: 3px 8px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: #166534;
-      border: 1px dashed #16a34a;
-      white-space: nowrap;
+      color: var(--text-mute);
     }
 
-    .card-body {
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .list-compact {
-      list-style: none;
-      padding: 0;
-      margin: 6px 0 0;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .list-compact li {
-      margin-bottom: 4px;
+    .stat-row {
       display: flex;
-      gap: 6px;
+      gap: 8px;
+      margin-bottom: 6px;
     }
 
-    .list-bullet {
-      width: 4px;
-      height: 4px;
-      border-radius: 999px;
-      background: #9ca3af;
-      margin-top: 8px;
-      flex-shrink: 0;
-    }
-
-    /* ====== 图片区域 ====== */
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .photo-item {
-      position: relative;
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      border: 1px solid var(--border-subtle);
+    .stat {
+      flex: 1;
       background: #020617;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .photo-img {
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
-      filter: saturate(1.02);
-    }
-
-    .photo-caption {
-      padding: 6px 9px 7px;
+      border-radius: 12px;
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      padding: 6px 8px;
       font-size: 11px;
-      color: var(--text-muted);
-      background: #f9fafb;
     }
 
-    .photo-caption strong {
-      color: #111827;
-    }
-
-    /* ====== 时间线 ====== */
-    .timeline {
-      border-left: 2px solid #d1d5db;
-      padding-left: 14px;
-      margin: 8px 0 0;
-      font-size: 13px;
-    }
-
-    .timeline-item {
-      margin-bottom: 10px;
-      position: relative;
-    }
-
-    .timeline-dot {
-      position: absolute;
-      left: -15px;
-      top: 5px;
-      width: 9px;
-      height: 9px;
-      border-radius: 999px;
-      background: #f97316;
-      border: 2px solid #fef3c7;
-      box-shadow: 0 0 0 4px rgba(248, 180, 72, 0.25);
-    }
-
-    .timeline-year {
-      font-weight: 600;
+    .stat label {
+      display: block;
+      color: var(--text-mute);
       margin-bottom: 2px;
     }
 
-    .timeline-text {
-      color: var(--text-muted);
+    .stat span {
+      font-size: 14px;
+      font-weight: 600;
     }
 
-    /* ====== 文献与标本列表 ====== */
-    .pill-row {
+    .card-text {
+      font-size: 11px;
+      color: var(--text-soft);
+      line-height: 1.6;
+    }
+
+    /* ---- 搜索块 ---- */
+    .search-block {
+      margin-top: 4px;
+      background: #020617;
+      border-radius: 14px;
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      padding: 9px 10px;
+    }
+
+    .search-label {
+      font-size: 12px;
+      color: var(--text-soft);
+      margin-bottom: 6px;
+    }
+
+    .search-input-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
+    .search-input-wrap {
+      flex: 1;
+      min-width: 180px;
+    }
+
+    #search-input {
+      width: 100%;
+      padding: 7px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(75, 85, 99, 0.9);
+      background: #020617;
+      color: var(--text-main);
+      font-size: 12px;
+      outline: none;
+    }
+
+    #search-input::placeholder {
+      color: var(--text-mute);
+    }
+
+    .filter-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
+    }
+
+    .filter-tag {
+      border-radius: 999px;
+      border: 1px solid rgba(75, 85, 99, 0.9);
+      background: #020617;
+      font-size: 11px;
+      padding: 3px 8px;
+      color: var(--text-mute);
+      cursor: pointer;
+      transition: background var(--transition), border-color var(--transition),
+        color var(--transition), transform var(--transition);
+    }
+
+    .filter-tag:hover {
+      border-color: var(--accent);
+      color: var(--text-main);
+      transform: translateY(-1px);
+    }
+
+    .filter-tag.active {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ============ 通用 section 样式 ============ */
+    section.section {
+      margin-top: 18px;
+    }
+
+    .section-card {
+      background: #020617;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.75);
+      padding: 14px 14px 14px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: baseline;
+      border-bottom: 1px solid rgba(31, 41, 55, 0.95);
+      padding-bottom: 8px;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .section-sub {
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    .section-remark {
+      font-size: 11px;
+      color: var(--text-mute);
+      min-width: 120px;
+      text-align: right;
+    }
+
+    .section-body {
+      font-size: 12px;
+      color: var(--text-soft);
+      line-height: 1.7;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.4fr);
+      gap: 10px;
+    }
+
+    .grid-2-equal {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    @media (max-width: 860px) {
+      .grid-2,
+      .grid-2-equal {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .sub-card {
+      background: #020617;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      padding: 9px 10px;
+    }
+
+    .sub-card h3 {
+      margin: 0 0 6px;
+      font-size: 13px;
+      color: var(--text-main);
+    }
+
+    .sub-card p {
+      margin: 0 0 6px;
+    }
+
+    .sub-card ul {
+      margin: 4px 0 4px;
+      padding-left: 18px;
+    }
+
+    .sub-card li {
+      margin-bottom: 3px;
+    }
+
+    /* ============ 图库 ============ */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
       margin-top: 6px;
     }
 
-    .pill {
-      font-size: 11px;
-      padding: 3px 8px;
-      border-radius: 999px;
-      border: 1px solid #e5e7eb;
-      background: #f9fafb;
-      color: #4b5563;
-    }
-
-    .muted {
-      color: var(--text-muted);
+    .gallery-item {
+      background: #020617;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      overflow: hidden;
       font-size: 12px;
     }
 
-    /* ====== 脚注 ====== */
-    footer {
-      padding: 18px 0 22px;
+    .gallery-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      background: radial-gradient(circle at 30% 10%, #1f2937 0, #020617 60%, #000 100%);
+    }
+
+    .gallery-caption {
+      padding: 8px 9px;
+      color: var(--text-soft);
+    }
+
+    .gallery-caption strong {
+      color: var(--accent-warm);
+    }
+
+    .tip {
       font-size: 11px;
-      color: #6b7280;
-      text-align: center;
+      color: var(--text-mute);
+      margin-top: 6px;
+    }
+
+    /* ============ 时间线 ============ */
+    .timeline {
+      margin-top: 4px;
+      border-left: 1px solid rgba(55, 65, 81, 0.95);
+      padding-left: 14px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 10px;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    .timeline-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      position: absolute;
+      left: -18px;
+      top: 4px;
+      box-shadow: 0 0 0 5px var(--accent-soft);
+    }
+
+    .timeline-year {
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 2px;
+      color: var(--text-main);
+    }
+
+    /* ============ 新闻卡片 ============ */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    @media (max-width: 860px) {
+      .news-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .news-card {
+      background: #020617;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      padding: 9px 10px;
+      font-size: 12px;
+      color: var(--text-soft);
+      line-height: 1.7;
+    }
+
+    .news-title {
+      margin: 0 0 4px;
+      font-size: 13px;
+      color: var(--text-main);
+    }
+
+    .news-meta {
+      font-size: 11px;
+      color: var(--text-mute);
+      margin-bottom: 5px;
+    }
+
+    .news-tags {
+      margin-top: 4px;
+      font-size: 11px;
+      color: var(--text-mute);
+    }
+
+    .news-tags span {
+      margin-right: 6px;
+    }
+
+    /* ============ 研究笔记 ============ */
+    .note-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.0fr) minmax(0, 2.0fr);
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    @media (max-width: 860px) {
+      .note-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .note-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    @media (max-width: 860px) {
+      .note-list {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .note-card {
+      background: #020617;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      padding: 9px 10px 10px;
+      font-size: 12px;
+      color: var(--text-soft);
+      line-height: 1.7;
+    }
+
+    .note-title {
+      margin: 0 0 4px;
+      font-size: 13px;
+      color: var(--text-main);
+    }
+
+    .note-meta {
+      font-size: 11px;
+      color: var(--text-mute);
+      margin-bottom: 5px;
+    }
+
+    .note-tags {
+      font-size: 11px;
+      color: var(--text-mute);
+      margin-top: 4px;
+    }
+
+    .note-tags span {
+      margin-right: 6px;
+    }
+
+    details.note-details {
+      margin-top: 5px;
+      background: #020617;
+      border-radius: 10px;
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      padding: 6px 8px 7px;
+    }
+
+    details.note-details summary {
+      cursor: pointer;
+      font-size: 11px;
+      color: var(--accent);
+      list-style: none;
+    }
+
+    details.note-details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .note-body p {
+      margin: 4px 0 4px;
+    }
+
+    .note-body ul {
+      margin: 4px 0 4px;
+      padding-left: 18px;
+    }
+
+    .note-body li {
+      margin-bottom: 3px;
+    }
+
+    /* ============ 页脚 ============ */
+    .footer {
+      margin-top: 10px;
+      font-size: 11px;
+      color: var(--text-mute);
+      text-align: right;
     }
   </style>
 </head>
 <body>
-<div class="page">
-  <!-- 顶部导航 -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <div class="brand-title">中华斑鳖资料库</div>
-        <div class="brand-sub">Rafetus swinhoei · independent archive</div>
-      </div>
-      <nav class="nav">
-        <a href="#overview">概览</a>
-        <a href="#photos">图片</a>
-        <a href="#history">时间线</a>
-        <a href="#literature">文献与标本</a>
-        <a href="#about">关于项目</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- hero 区 -->
-  <section class="hero" id="overview">
-    <div class="container hero-inner">
-      <div>
-        <div class="hero-tag">
-          <span class="hero-tag-dot"></span>
-          <span>全球最稀有淡水龟类 · 独立档案工程</span>
-        </div>
-        <h1 class="hero-title">中华斑鳖资料库</h1>
-        <p class="hero-subtitle">
-          本站由个人独立维护，专门记录与中华斑鳖（<em>Rafetus swinhoei</em>）相关的一切——历史文献、标本记录、
-          野外线索、科研进展与图像档案。目标不是“讲一个好故事”，而是尽量把能查到的事实放在同一个地方。
-        </p>
-        <div class="hero-meta">
-          <span>中文整理 · 长期更新</span>
-          <span>非官方 · 欢迎引用与更正</span>
-          <span>聚焦：中国 / 越南及周边水系</span>
-        </div>
-        <div class="hero-buttons">
-          <a href="#photos" class="btn-primary">查看图片资料库</a>
-          <a href="#literature" class="btn-ghost">浏览文献与标本线索</a>
-        </div>
-        <div class="hero-note">
-          <strong>说明：</strong>本站暂不公开敏感地点坐标与未核实的存活线索，只做“信息索引”，而不是“打卡名单”。
-        </div>
-      </div>
-
-      <aside class="hero-panel">
-        <div class="hero-panel-title">目前收录内容（持续整理中）</div>
-        <div class="hero-panel-sub">这个数字不会很快变大，但会尽量变得更准确。</div>
-        <div class="hero-stats">
-          <div class="stat">
-            <div class="stat-label">历史文献条目</div>
-            <div class="stat-value">0+</div>
-          </div>
-          <div class="stat">
-            <div class="stat-label">标本 / 记录点</div>
-            <div class="stat-value">0+</div>
-          </div>
-          <div class="stat">
-            <div class="stat-label">公开图像档案</div>
-            <div class="stat-value">0+</div>
+  <div class="page">
+    <main class="shell">
+      <!-- 顶部导航 -->
+      <header>
+        <div class="brand">
+          <div class="brand-logo" aria-hidden="true"></div>
+          <div>
+            <div class="brand-title">中华斑鳖资料库</div>
+            <div class="brand-sub">一个围绕 Rafetus swinhoei 的独立中文档案站</div>
           </div>
         </div>
-        <div class="hero-quote">
-          <strong>个人立场：</strong>与其在新闻里反复感叹“世界上最后几只”，不如把有限的信息一点一点补全。
-          这是一个学生在业余时间慢慢搭起来的档案，难免有遗漏和判断偏差，欢迎任何指正。
-        </div>
-      </aside>
-    </div>
-  </section>
+        <nav class="nav">
+          <a href="#baike">斑鳖百科</a>
+          <a href="#range">分布与栖息地</a>
+          <a href="#status">濒危现状</a>
+          <a href="#actions">保护与新闻</a>
+          <a href="#timeline">历史时间线</a>
+          <a href="#gallery">标本图库</a>
+          <a href="#vietnam">越南斑鳖</a>
+          <a href="#history">历史资料</a>
+          <a href="#notes">研究笔记</a>
+          <a href="#about">关于本站</a>
+        </nav>
+      </header>
 
-  <main>
-    <!-- 图片资料库 -->
-    <section class="section" id="photos">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-kicker">PHOTO ARCHIVE</div>
-          <h2 class="section-title">图片资料库（Photos）</h2>
-          <p class="section-desc">
-            以下为与斑鳖相关的部分图片。为了保护现场与个体安全，部分照片为裁剪版或去除了敏感信息。
-            更高分辨率图像及原始信息可在合适的学术或保护语境中另行共享。
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <div class="card-title">当前示例图片</div>
-            <div class="card-tag">如何替换为你自己的照片？</div>
-          </div>
-          <div class="card-body">
-            <p class="muted">
-              你可以把自己的照片上传到 <code>images/</code> 文件夹，然后在下面几条 <code>&lt;img&gt;</code> 的
-              <code>src</code> 改成对应文件名。例如 <code>images/rafetus-skull.jpg</code>。
+      <!-- 顶部总览 + 搜索 -->
+      <section class="hero">
+        <div class="hero-grid">
+          <div>
+            <div class="hero-badges">
+              <span class="badge-main">极度濒危 · 非官方独立档案</span>
+              <span class="badge-sub">公众科普 / 学术参考 / 龟鳖爱好者</span>
+              <span class="badge-sub">长期更新 · 保留不确定性</span>
+            </div>
+            <h1 class="hero-title">中华斑鳖资料库</h1>
+            <p class="hero-sub">从历史文献到最新调查，尽量把一个物种的故事讲完整一点。</p>
+            <p class="hero-text">
+              本站由个人独立维护，专门整理与 <em>中华斑鳖（Rafetus swinhoei）</em> 相关的中文信息：物种基础百科、历史时间线、
+              标本与照片、越南进程、文献资料、以及一线调查与思考的个人笔记。
+              <strong>它不是“权威结论”，而是一个随时间更新的工作记录。</strong>
             </p>
-
-            <div class="photo-grid">
-              <!-- 示例 1：请把文件名改成你真实的图片名 -->
-              <figure class="photo-item">
-               <img src="images/斑鳖图片/微信图片_2025121024142_165_1.jpg" alt="中华斑鳖照片 1" class="photo-img" />
-
-                  <strong>斑鳖头骨 / 标本视角</strong><br />
-                  这里可以写一点说明：比如标本来源的大致地区、年代以及可以看出的形态特征。（文件名：rafetus-sample-1.jpg）
-                </figcaption>
-              </figure>
-
-              <!-- 示例 2 -->
-              <figure class="photo-item">
-                <img src="images/rafetus-sample-2.jpg" alt="斑鳖相关图片示例 2" class="photo-img" />
-                <figcaption class="photo-caption">
-                  <strong>历史照片 / 圈养个体</strong><br />
-                  用一句话解释这张图的背景，例如：拍摄年代、所属机构、是否为已知个体。（文件名：rafetus-sample-2.jpg）
-                </figcaption>
-              </figure>
-
-              <!-- 示例 3 -->
-              <figure class="photo-item">
-                <img src="images/rafetus-sample-3.jpg" alt="斑鳖相关图片示例 3" class="photo-img" />
-                <figcaption class="photo-caption">
-                  <strong>栖息地环境 / 水系线索</strong><br />
-                  如果是河湖环境照，可以只强调“环境类型”，避免给出过于精确的地理线索。（文件名：rafetus-sample-3.jpg）
-                </figcaption>
-              </figure>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 时间线 -->
-    <section class="section" id="history">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-kicker">TIMELINE</div>
-          <h2 class="section-title">简要时间线（持续补充中）</h2>
-          <p class="section-desc">
-            这里只放一个极简时间线，帮自己和其他人快速对齐：斑鳖的故事大致发生在怎样的历史轴上。
-            细节部分将在文献与标本章节逐步展开。
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <div class="card-title">从命名、误解，到“最后几只”的叙事</div>
-            <div class="card-tag">这里只是草稿，会慢慢丰富</div>
-          </div>
-          <div class="card-body">
-            <div class="timeline">
-              <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-year">19 世纪末 – 20 世纪初</div>
-                <div class="timeline-text">
-                  早期标本与文献记录出现，命名、分类与产地记载并不完全一致，也为后来的混乱埋下伏笔。
-                </div>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-year">20 世纪中后期</div>
-                <div class="timeline-text">
-                  中国与越南陆续有零散报道与标本，但很少有人真正系统梳理整个物种的分布与命运，大部分记录只存在于博物馆抽屉和地方记忆里。
-                </div>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-year">21 世纪初以后</div>
-                <div class="timeline-text">
-                  “世界上仅剩几只”的说法开始进入大众视野。圈养配对、野外调查、eDNA 尝试等工作逐渐展开，
-                  但关于过去的那一百多年，仍然有大量空白需要补课。
-                </div>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-year">现在</div>
-                <div class="timeline-text">
-                  这个小小的资料库只是一个起点：尽可能把能查到的文献、标本和记录一条条整理出来，
-                  为未来真正的系统研究和保护行动打一点基础。
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 文献与标本 -->
-    <section class="section" id="literature">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-kicker">LITERATURE & SPECIMENS</div>
-          <h2 class="section-title">文献与标本记录（框架预留）</h2>
-          <p class="section-desc">
-            这一部分未来会按照「历史文献」「博物馆标本」「现代记录 / 报道」「eDNA 与调查项目」几个维度拆开。
-            目前只是把结构先搭好，方便后续往里填具体条目。
-          </p>
-        </div>
-
-        <div class="grid-2">
-          <div class="card">
-            <div class="card-header">
-              <div class="card-title">历史文献（Historical Literature）</div>
-              <div class="card-tag">准备加入的内容</div>
-            </div>
-            <div class="card-body">
-              <p class="muted">
-                包括最早的命名文献、后续的修订、分布记载，以及那些在今天几乎被人遗忘的小段文字。
-                很多时候，一条不起眼的注释里藏着一个“消失水系”的线索。
-              </p>
-              <ul class="list-compact">
-                <li>
-                  <span class="list-bullet"></span>
-                  <span>按年代整理主要文献，给出简短中文摘要和原文出处，方便快速定位。</span>
-                </li>
-                <li>
-                  <span class="list-bullet"></span>
-                  <span>对旧文献中的地名、方位等进行现代地理对应，标记不确定性。</span>
-                </li>
-                <li>
-                  <span class="list-bullet"></span>
-                  <span>记录每篇文献对斑鳖的称呼、分类处理和可能的误判。</span>
-                </li>
-              </ul>
-
-              <div class="pill-row">
-                <span class="pill">原始命名 / 描述</span>
-                <span class="pill">旧地名与新地名对应</span>
-                <span class="pill">含糊记录的再解读</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-header">
-              <div class="card-title">标本与记录点（Museum Specimens）</div>
-              <div class="card-tag">不会公开精确坐标</div>
-            </div>
-            <div class="card-body">
-              <p class="muted">
-                标本是“不会再动的证据”。这里会尽量收集各博物馆和私人收藏中与斑鳖相关的藏品信息：
-                编号、采集年代、大致产地、原始标签内容，以及可能存在的误定种情况。
-              </p>
-              <ul class="list-compact">
-                <li>
-                  <span class="list-bullet"></span>
-                  <span>按收藏机构整理：如某博物馆的甲骨、完整个体、幼体标本等。</span>
-                </li>
-                <li>
-                  <span class="list-bullet"></span>
-                  <span>用模糊化的地理信息（流域/省份等级）而不是精确点位。</span>
-                </li>
-                <li>
-                  <span class="list-bullet"></span>
-                  <span>对于存疑标本，会在备注中说明“为什么值得怀疑”。</span>
-                </li>
-              </ul>
-
-              <div class="pill-row">
-                <span class="pill">博物馆编号索引</span>
-                <span class="pill">私人收藏线索</span>
-                <span class="pill">疑似 / 存疑条目</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card" style="margin-top: 16px;">
-          <div class="card-header">
-            <div class="card-title">调查与科研项目（Research & Surveys）</div>
-            <div class="card-tag">包括 eDNA、访谈和现代调查</div>
-          </div>
-          <div class="card-body">
-            <p class="muted">
-              这里会记录近些年的调查与科研工作：包括 eDNA 尝试、问卷访谈、地方保护区的摸排、
-              以及学界与保护机构之间的合作。很多项目本身不公开详细报告，但至少可以给一个“存在过”的记录。
+            <p class="hero-note">
+              当前版本：结构 v1.0（已把主要板块都搭好，方便后续慢慢往里填内容）。
             </p>
-            <ul class="list-compact">
-              <li>
-                <span class="list-bullet"></span>
-                <span>项目级别：时间、负责机构、主要方法（如 eDNA / 实地捕获 / 访谈）以及公开程度。</span>
-              </li>
-              <li>
-                <span class="list-bullet"></span>
-                <span>只记录已经公开的信息，不泄露未授权的内部细节。</span>
-              </li>
-              <li>
-                <span class="list-bullet"></span>
-                <span>个人参与的部分会单独标注，和“旁观者整理”的内容区分开来。</span>
-              </li>
+          </div>
+          <div class="hero-side">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">目前大致整理规模（示意，可手动改数字）</div>
+                <div class="card-sub">只是方便自己心里有个数，不是正式统计。</div>
+              </div>
+              <div class="stat-row">
+                <div class="stat">
+                  <label>历史 / 现代文献条目</label>
+                  <span>20+</span>
+                </div>
+                <div class="stat">
+                  <label>已知 / 可疑标本</label>
+                  <span>10+</span>
+                </div>
+                <div class="stat">
+                  <label>近年可靠线索</label>
+                  <span>7+</span>
+                </div>
+              </div>
+              <div class="card-text">
+                这些数字可以根据你资料库的进展随时自己改。真正重要的是：每一条记录背后的时间、地点、来源和可信度。
+              </div>
+            </div>
+
+            <div class="search-block">
+              <div class="search-label">站内搜索 / 快速筛选</div>
+              <div class="search-input-row">
+                <div class="search-input-wrap">
+                  <input
+                    id="search-input"
+                    type="text"
+                    placeholder="输入关键词：同莫湖 / 颅骨 / 太湖 / eDNA / 还剑湖…"
+                  />
+                </div>
+              </div>
+              <div class="filter-tags" id="filter-tags">
+                <!-- 点击标签 = 简单分类过滤 -->
+                <button type="button" class="filter-tag active" data-filter="all">全部板块</button>
+                <button type="button" class="filter-tag" data-filter="百科">百科</button>
+                <button type="button" class="filter-tag" data-filter="栖息地">栖息地</button>
+                <button type="button" class="filter-tag" data-filter="现状">濒危现状</button>
+                <button type="button" class="filter-tag" data-filter="保护">保护 / 行动</button>
+                <button type="button" class="filter-tag" data-filter="时间线">时间线</button>
+                <button type="button" class="filter-tag" data-filter="图片">图片 / 标本</button>
+                <button type="button" class="filter-tag" data-filter="越南">越南</button>
+                <button type="button" class="filter-tag" data-filter="历史资料">历史资料</button>
+                <button type="button" class="filter-tag" data-filter="研究笔记">研究笔记</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 斑鳖百科 -->
+      <section
+        id="baike"
+        class="section section-card js-search-item"
+        data-tags="百科,基础信息"
+      >
+        <div class="section-header">
+          <div>
+            <div class="section-title">斑鳖百科（基础信息）</div>
+            <div class="section-sub">
+              面向第一次听说斑鳖的人，也给研究者一个快速确认“我们说的是同一个物种”的起点。
+            </div>
+          </div>
+          <div class="section-remark">标签：百科 / 基础知识</div>
+        </div>
+        <div class="section-body grid-2">
+          <div class="sub-card">
+            <h3>物种概览</h3>
+            <p>
+              中华斑鳖（<em>Rafetus swinhoei</em>），又被称为“黄斑巨鳖”“斯氏鳖”，是目前已知体型最大的淡水鳖之一。
+              成体背甲可超过 1.0–1.5 米，体重可达百公斤级。历史上主要分布在中国长江下游–太湖流域及越南北部红河系统。
+            </p>
+            <p>
+              很长一段时间里，斑鳖在科学上并没有被当作独立物种，而是被混在“鼋”“大鳖”“巨型中华鳖”等各种名称之下。
+              直到 20 世纪末至 21 世纪初，随着博物馆标本重查和基因研究的推进，它才逐渐被重新“看见”。
+            </p>
+          </div>
+          <div class="sub-card">
+            <h3>你可以在这里继续补充：</h3>
+            <ul>
+              <li>· 分类地位：龟鳖目 → 鳖科 → 斑鳖属（Rafetus）等。</li>
+              <li>· 形态特征：背甲形状、头部特征，与中华鳖 / 西亚斑鳖的区别。</li>
+              <li>· 生活习性：偏好怎样的水体、食性、是否有季节性迁移。</li>
+              <li>· 威胁因素：栖息地变化、捕捞、污染、工程建设等。</li>
+              <li>· 保护等级：IUCN、国家级保护动物等官方信息。</li>
+            </ul>
+            <!-- 提示：以后如果想做“完整百科子页面”，可以再建 baike.html，然后在这里加一个链接跳过去 -->
+          </div>
+        </div>
+      </section>
+
+      <!-- 分布与栖息地 -->
+      <section
+        id="range"
+        class="section section-card js-search-item"
+        data-tags="栖息地,百科"
+      >
+        <div class="section-header">
+          <div>
+            <div class="section-title">历史分布与栖息地类型</div>
+            <div class="section-sub">
+              模仿大象 / 犀牛网站的结构，把“在哪儿”“喜欢什么样的环境”单独说清楚。
+            </div>
+          </div>
+          <div class="section-remark">标签：栖息地 / 分布</div>
+        </div>
+        <div class="section-body grid-2">
+          <div class="sub-card">
+            <h3>大致分布范围</h3>
+            <p>
+              目前主流观点认为，斑鳖的历史分布大致包括两大区域：
+            </p>
+            <ul>
+              <li>· 中国：长江下游–太湖流域及周边水系。</li>
+              <li>· 越南：红河及部分支流、若干大型湖泊与水库。</li>
+            </ul>
+            <p>
+              你可以在这里继续细化：按国家 / 流域 / 典型地点列出已知记录与“可能曾经存在”的区域。
+              以后想做地图，可以基于这部分内容，再单独做一张静态或交互式地图。
+            </p>
+          </div>
+          <div class="sub-card">
+            <h3>典型栖息地特征</h3>
+            <ul>
+              <li>· 大河 + 大湖系统：有缓流、深水区，也有沙洲和浅滩。</li>
+              <li>· 能提供大型软体龟躲藏的水域结构（深坑、陡岸、树根等）。</li>
+              <li>· 丰富的鱼类 / 软体动物资源，支持百公斤级个体长期生存。</li>
+            </ul>
+            <p>
+              将来可以在这里补充：
+            </p>
+            <ul>
+              <li>· 每个湖 / 河段的大致面积、水深、透明度。</li>
+              <li>· 人类活动：捕捞、航运、水坝、旅游开发等。</li>
+              <li>· 近期是否还有大鳖目击、网具误捕、eDNA 信号等。</li>
             </ul>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- 关于项目 -->
-    <section class="section" id="about">
-      <div class="container">
+      <!-- 濒危现状与主要威胁 -->
+      <section
+        id="status"
+        class="section section-card js-search-item"
+        data-tags="现状,威胁,百科"
+      >
         <div class="section-header">
-          <div class="section-kicker">ABOUT</div>
-          <h2 class="section-title">关于这个小小的资料库</h2>
-          <p class="section-desc">
-            和大型机构的网站不同，这里没有团队、没有公关语言，只有一个人慢慢往里填东西。
-            正因为体量很小，反而可以在某些细节上稍微“固执”一点。
+          <div>
+            <div class="section-title">濒危现状与主要威胁</div>
+            <div class="section-sub">
+              类似“黑犀牛现状”那种板块：总体情况 + 面临什么问题。
+            </div>
+          </div>
+          <div class="section-remark">标签：濒危现状 / 威胁</div>
+        </div>
+        <div class="section-body grid-2">
+          <div class="sub-card">
+            <h3>总体情况（可以随时更新文案）</h3>
+            <p>
+              · 全球已确认的斑鳖个体极少，长期维持在个位数附近。<br />
+              · 中国境内已知仅有一只圈养雄性个体（苏州），越南同莫湖 / 宣汉湖存在少数大型个体。<br />
+              · 野外是否还有“隐形种群”，目前仍存在不同观点和不确定线索。
+            </p>
+            <p>
+              建议这里保持文字相对克制，随你掌握的新资料逐步修正。
+            </p>
+          </div>
+          <div class="sub-card">
+            <h3>主要威胁（可以按重要程度排序）</h3>
+            <ul>
+              <li>· 栖息地破碎化与水利工程改造。</li>
+              <li>· 捕捞与食用（历史 + 近几十年）。</li>
+              <li>· 污染与外来物种（如大闸蟹养殖等带来的影响）。</li>
+              <li>· 种群过度小型化带来的遗传瓶颈与近交风险。</li>
+            </ul>
+            <p>
+              类似大象 / 犀牛网站这里，你也可以补充“人类与斑鳖的冲突方式”“误捕”“商贸需求”等。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 保护行动 + 新闻快讯 -->
+      <section
+        id="actions"
+        class="section section-card js-search-item"
+        data-tags="保护,新闻,动态"
+      >
+        <div class="section-header">
+          <div>
+            <div class="section-title">保护行动与新闻快讯</div>
+            <div class="section-sub">
+              模仿成熟物种网站的“我们在做什么 + 最新进展”，你可以把 NGO、科研团队、媒体报道集中放在这里。
+            </div>
+          </div>
+          <div class="section-remark">标签：保护 / 新闻 / 动态</div>
+        </div>
+        <div class="section-body">
+          <div class="grid-2">
+            <div class="sub-card">
+              <h3>正在进行的工作（概览）</h3>
+              <p>这里可以写你自己整理出来的“几个方向”：</p>
+              <ul>
+                <li>· 中国 / 越南的官方调查与合作项目。</li>
+                <li>· 国际 NGO 和科研团队的长期监测。</li>
+                <li>· eDNA、相机陷阱、无人机等新技术尝试。</li>
+                <li>· 社区访谈、传统文化记录与公众科普。</li>
+              </ul>
+              <p>
+                以后如果你想做成类似“项目列表”，只要在下面再多复制几个 <code>.sub-card</code> 都可以。
+              </p>
+            </div>
+            <div class="sub-card">
+              <h3>如何阅读这里的新闻？</h3>
+              <p>
+                · 尽量注明时间、来源、原文链接；<br />
+                · 简单说明核心信息 + 你自己的判断（可信度、可能的误解）；<br />
+                · 如果不同来源说法不一致，也可以在这里并列放出来。
+              </p>
+              <p>
+                这样以后回头看时，你能清楚地知道：当时媒体 / 机构是怎么说的，而你当时是怎么想的。
+              </p>
+            </div>
+          </div>
+
+          <!-- 新闻列表：以后新增新闻，只要复制一个 .news-card 块 -->
+          <div class="news-grid" style="margin-top:10px;">
+            <article
+              class="news-card js-search-item"
+              data-tags="新闻,中国,圈养个体,保护"
+            >
+              <h3 class="news-title">示例：苏州圈养雄性斑鳖的近况报道</h3>
+              <div class="news-meta">年份：可写约 2025 年 · 地点：中国苏州 · 类型：媒体摘要 + 个人备注</div>
+              <p>
+                某些媒体以“全国仅剩 1 只斑鳖”为标题，再次强调苏州动物园圈养雄性个体的“孤独”。
+                在这里你可以：简要概括报道说了什么，然后补充自己对这种叙事方式的看法（它有什么价值，又有什么容易误导的地方）。
+              </p>
+              <div class="news-tags">
+                <span>#中国</span>
+                <span>#圈养个体</span>
+                <span>#媒体报道</span>
+              </div>
+            </article>
+
+            <article
+              class="news-card js-search-item"
+              data-tags="新闻,越南,死亡记录,保护"
+            >
+              <h3 class="news-title">示例：同莫湖雌性个体死亡之后</h3>
+              <div class="news-meta">年份：可写约 2023 年 · 地点：越南河内 · 类型：事件摘要</div>
+              <p>
+                这里可以写官方通报的内容、大致时间线，以及国际媒体如何转述这件事。
+                重点是记录“确切知道的事实”与“不确定的部分”，方便以后回头再看。
+              </p>
+              <div class="news-tags">
+                <span>#越南</span>
+                <span>#同莫湖</span>
+                <span>#死亡记录</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 历史时间线 -->
+      <section
+        id="timeline"
+        class="section section-card js-search-item"
+        data-tags="时间线,历史"
+      >
+        <div class="section-header">
+          <div>
+            <div class="section-title">历史时间线（大事记）</div>
+            <div class="section-sub">
+              参考很多物种网站常用的“时间轴”：从最早的描述，到最近一次确认记录，一条线梳理下来。
+            </div>
+          </div>
+          <div class="section-remark">标签：时间线 / 历史进程</div>
+        </div>
+        <div class="section-body">
+          <div class="timeline">
+            <!-- 以后要加新年份，只要复制一个 .timeline-item，再改年份和内容 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">19 世纪末 · 早期科学描述</div>
+              <div>
+                欧洲博物学家在中国获得大型软体龟标本，并以独立物种形式描述（后来归入
+                <em>Rafetus swinhoei</em>）。此后几十年间，相关记载零散、名称混乱。
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">20 世纪 · 种群在“看不见”的地方衰退</div>
+              <div>
+                长江–太湖–红河系统的大型鳖类在捕捞和栖息地变化下快速减少。斑鳖没有从人类生活中消失，
+                但作为“一个物种”的存在感几乎为零。
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">21 世纪初 · 被重新“认识”的十几年</div>
+              <div>
+                中越学者和国际组织开始系统梳理标本、调查存活个体。苏州、长沙、越南多地的巨鳖被确认与
+                <em>Rafetus swinhoei</em> 有关，世界逐渐意识到：这可能是“地球上最稀有的龟鳖之一”。
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">2016–2019 年 · 关键个体相继离世</div>
+              <div>
+                还剑湖个体、苏州雌性个体先后死亡，彻底敲响警钟。舆论中多次出现“最后一只”“已经灭绝”等说法，
+                但越南湖泊中的调查又带来了一线希望。
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">2020–至今 · “最后几只”的时代</div>
+              <div>
+                越南同莫湖、宣汉湖等水体相继确认大型个体存在，又有个体死亡。与此同时，中国境内仍在寻找潜在残存个体，
+                各种 eDNA / 相机 / 访谈线索交织在一起。
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 标本与图片图库 -->
+      <section
+        id="gallery"
+        class="section section-card js-search-item"
+        data-tags="图片,标本"
+      >
+        <div class="section-header">
+          <div>
+            <div class="section-title">标本与图片图库</div>
+            <div class="section-sub">
+              学术 + 博物馆风格的图片区：现存个体、历史标本、栖息地照片都可以慢慢放进来。
+            </div>
+          </div>
+          <div class="section-remark">标签：图片 / 标本 / 图库</div>
+        </div>
+        <div class="section-body">
+          <div class="gallery">
+            <!-- 提示：把 src 换成你上传到 images 文件夹的实际文件名即可；下面 3 个是占位示例 -->
+            <figure class="gallery-item">
+              <img
+                class="gallery-img"
+                src="images/示例-斑鳖圈养个体.jpg"
+                alt="示例图片占位：苏州圈养雄性斑鳖个体"
+              />
+              <figcaption class="gallery-caption">
+                <strong>示例：苏州圈养雄性个体</strong><br />
+                在这里写拍摄时间、地点、拍摄者（如果同意署名）、体型估计等信息，让每张图都带一点“数据”。
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-item">
+              <img
+                class="gallery-img"
+                src="images/示例-越南湖泊环境.jpg"
+                alt="示例图片占位：越南湖泊环境"
+              />
+              <figcaption class="gallery-caption">
+                <strong>示例：越南某湖泊栖息地</strong><br />
+                描述水体类型、水深、岸线、人类活动、是否有适合产卵的沙洲等，将来可与 eDNA 或相机数据对应。
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-item">
+              <img
+                class="gallery-img"
+                src="images/示例-历史标本插图.jpg"
+                alt="示例图片占位：历史标本或颅骨照片"
+              />
+              <figcaption class="gallery-caption">
+                <strong>示例：历史标本 / 颅骨</strong><br />
+                适合放博物馆标本、颅骨照片，注明馆藏编号、采集时间和可能的来源。
+              </figcaption>
+            </figure>
+          </div>
+          <p class="tip">
+            提示：在仓库里新建 <code>images</code> 文件夹，把图片拖进去，然后改上面
+            <code>src="images/文件名.jpg"</code> 即可。新增图片 = 复制一个 <code>&lt;figure class="gallery-item"&gt;…&lt;/figure&gt;</code>。
           </p>
         </div>
+      </section>
 
-        <div class="grid-2">
-          <div class="card">
-            <div class="card-header">
-              <div class="card-title">维护者的想法</div>
-              <div class="card-tag">一个学生版的“物种档案工程”</div>
-            </div>
-            <div class="card-body">
-              <p class="muted">
-                斑鳖这个物种的命运，已经足够戏剧化了。外界不缺故事，但缺一个相对完整的“资料索引”。
-                于是就有了这个网站：尽可能在不打扰任何人的前提下，把零散的信息慢慢拼起来。
-              </p>
-              <ul class="list-compact">
-                <li>
-                  <span class="list-bullet"></span>
-                  <span>不会刻意强调“最后几只”的悲情，而是把更多篇幅留给事实本身。</span>
-                </li>
-                <li>
-                  <span class="list-bullet"></span>
-                  <span>宁愿慢一点、少一点，也尽量避免把没有核实的消息当成结论。</span>
-                </li>
-                <li>
-                  <span class="list-bullet"></span>
-                  <span>欢迎任何形式的补充、更正和反驳——哪怕只是提醒某条线索有问题。</span>
-                </li>
-              </ul>
+      <!-- 越南斑鳖专栏 -->
+      <section
+        id="vietnam"
+        class="section section-card js-search-item"
+        data-tags="越南,历史,保护"
+      >
+        <div class="section-header">
+          <div>
+            <div class="section-title">越南斑鳖：湖泊、神话与保护项目</div>
+            <div class="section-sub">
+              把“越南部分”单独拎出来，类似很多物种网站会单独做“某地区专栏”那样。
             </div>
           </div>
-
-          <div class="card">
-            <div class="card-header">
-              <div class="card-title">联系与致谢</div>
-              <div class="card-tag">这里刻意不放具体名字</div>
-            </div>
-            <div class="card-body">
-              <p class="muted">
-                这个资料库能慢慢搭起来，很大程度上是因为前辈们几几十年间留下的标本、论文、田野记录，
-                以及愿意花时间和一个学生聊天、解释背景的老师和朋友。
-              </p>
-              <ul class="list-compact">
-                <li>
-                  <span class="list-bullet"></span>
-                  <span>如果你是相关领域研究者 / 保护工作者，有任何希望更正或隐藏的内容，可以随时联系维护者。</span>
-                </li>
-                <li>
-                  <span class="list-bullet"></span>
-                  <span>在不违反保密与安全前提下，本站也很乐意为学术研究、保护项目或科普写作提供资料整理帮助。</span>
-                </li>
-              </ul>
-              <p class="muted">
-                暂时不在页面上公开个人邮箱和社交账号，避免把注意力从“物种本身”转移到“网站作者”身上。
-                如果你真的需要联系，应该已经有办法找到我。
-              </p>
-            </div>
+          <div class="section-remark">标签：越南 / 保护进程</div>
+        </div>
+        <div class="section-body grid-2">
+          <div class="sub-card">
+            <h3>还剑湖神龟与物种身份</h3>
+            <p>
+              在越南，斑鳖不只是一个物种，而是嵌在“还剑湖神龟”故事里的文化符号。你可以在这里详细写：传说、历史、科学调查如何介入，以及人们怎么看待“神龟被捕捉、体检、采样”。
+            </p>
+            <p>
+              建议：把文化叙事和科学结论分两层写清楚，既尊重当地传统，又让读者知道“我们现在认为这只动物在分类学上是谁”。
+            </p>
+          </div>
+          <div class="sub-card">
+            <h3>同莫湖 / 宣汉湖等关键水体</h3>
+            <p>
+              这里可以梳理：每个湖泊的大致位置、面积、水深、首次确认斑鳖的时间、关键个体（如同莫湖雌性）的经历，以及后续调查进展。
+            </p>
+            <p>
+              也可以专门为 Da River 等流域做一个小段落，记录你整理过的目击记录数量、位置和你自己的判断。
+            </p>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
 
-  <footer>
-    <div class="container">
-      中华斑鳖资料库 · Rafetus swinhoei Archive<br />
-      这是一个学生在业余时间维护的长期小项目，欢迎引用，也欢迎挑错。
-    </div>
-  </footer>
-</div>
+      <!-- 历史资料与文献 -->
+      <section
+        id="history"
+        class="section section-card js-search-item"
+        data-tags="历史资料,文献,标本"
+      >
+        <div class="section-header">
+          <div>
+            <div class="section-title">历史资料与文献档案</div>
+            <div class="section-sub">
+              把古籍、早期论文、博物馆标本信息这些“硬资料”集中放在一起，方便以后查找和引用。
+            </div>
+          </div>
+          <div class="section-remark">标签：历史资料 / 文献 / 标本号</div>
+        </div>
+        <div class="section-body grid-2">
+          <div class="sub-card">
+            <h3>古籍与早期记载</h3>
+            <p>
+              这里适合做“考据笔记”：  
+              · 列出出现“鼋”“大鳖”等字眼的关键段落；  
+              · 给出原文 + 出处；  
+              · 写上你对其是否可能指向斑鳖的判断（以及不确定性）。
+            </p>
+            <p>
+              你可以按朝代 / 地区 / 水系整理，让人一眼能看出“历史上哪些地方可能有斑鳖”。
+            </p>
+          </div>
+          <div class="sub-card">
+            <h3>博物馆标本与编号整理</h3>
+            <p>建议每条记录都写清楚这些信息：</p>
+            <ul>
+              <li>· 馆名 + 标本编号（如 NHMUK 1947.x.x.x）。</li>
+              <li>· 采集时间 / 地点（如果有的话）。</li>
+              <li>· 标本类型（整只、颅骨、骨架、皮张等）。</li>
+              <li>· 是否有照片 / CT / 测量数据。</li>
+              <li>· 你自己的判断：确定是斑鳖 / 存疑 / 可能是其他物种。</li>
+            </ul>
+            <p>
+              将来如果要做数据库，只要把这里的内容整理成表格即可。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 研究笔记 -->
+      <section
+        id="notes"
+        class="section section-card js-search-item"
+        data-tags="研究笔记,个人思考"
+      >
+        <div class="section-header">
+          <div>
+            <div class="section-title">作者研究笔记（长期更新区）</div>
+            <div class="section-sub">
+              这里不追求“完美论文风”，而是记录你一路的推理、犹豫、修正和决定。
+            </div>
+          </div>
+          <div class="section-remark">标签：研究笔记 / 线索 / 个人观察</div>
+        </div>
+        <div class="section-body note-layout">
+          <aside class="sub-card">
+            <h3>如何使用这个“笔记区”？</h3>
+            <ul>
+              <li>· 每一张卡片就是一篇笔记（调查、标本、文献、推理等等）。</li>
+              <li>· 新增笔记 = 复制右边某个 <code>.note-card</code> 再改标题和内容。</li>
+              <li>· 推荐保留一篇“总笔记”，用于整理阶段性结论和 TODO。</li>
+            </ul>
+          </aside>
+          <div class="note-list">
+            <!-- 笔记 1：总入口 -->
+            <article
+              class="note-card js-search-item"
+              data-tags="研究笔记,总览,长期更新"
+            >
+              <h3 class="note-title">作者历史研究总笔记（长期入口）</h3>
+              <div class="note-meta">建议：一直放在第一位，作为整个资料库的“脑内总览”。</div>
+              <p>
+                这里可以按模块整理：  
+                · 越南线索（湖泊 / 河段 / eDNA / 目击）；  
+                · 中国线索（太湖、红水河等）；  
+                · 标本清单（已确认 / 存疑 / 需要继续查的馆）；  
+                · 文献阅读进度；  
+                · 下一步打算做的几件事。
+              </p>
+              <details class="note-details">
+                <summary>示例：可以怎么写这一篇“总入口”？</summary>
+                <div class="note-body">
+                  <p>你可以像写给“未来的自己”的工作备忘录一样来写：</p>
+                  <ul>
+                    <li>· “我已经比较确认的事情有哪些？”</li>
+                    <li>· “我还不确定，但觉得有必要继续追的线索有哪些？”</li>
+                    <li>· “如果以后真的没空了，最希望别人接手的是哪几块？”</li>
+                  </ul>
+                </div>
+              </details>
+              <div class="note-tags">
+                <span>#总览</span>
+                <span>#长期更新</span>
+              </div>
+            </article>
+
+            <!-- 笔记 2：Da River 示例 -->
+            <article
+              class="note-card js-search-item"
+              data-tags="研究笔记,Da River,目击记录"
+            >
+              <h3 class="note-title">示例：Da River 流域目击记录整理</h3>
+              <div class="note-meta">类型：调查类笔记 · 状态：可不断追加新的记录与判断</div>
+              <p>
+                这里可以列出你收集到的 Da River 目击记录：时间、地点、目击者、描述的体型和行为，以及你对每条记录的可信度打分。
+              </p>
+              <details class="note-details">
+                <summary>展开查看示例结构</summary>
+                <div class="note-body">
+                  <ul>
+                    <li>· 2017–2018 年：某河段 50 kg 左右个体的目击（背景、环境）。</li>
+                    <li>· 2019 年：80–100 kg 个体频繁出现的河段（是否可能是成体斑鳖）。</li>
+                    <li>· 2020–2023 年：多个目击点之间的距离与水文连接情况。</li>
+                  </ul>
+                  <p>
+                    最后写上你的阶段性结论：比如“更像是一个小种群，而不是孤立个体”，以及你打算下一步验证什么。
+                  </p>
+                </div>
+              </details>
+              <div class="note-tags">
+                <span>#Da River</span>
+                <span>#目击记录</span>
+              </div>
+            </article>
+
+            <!-- 笔记 3：幼体形态示例 -->
+            <article
+              class="note-card js-search-item"
+              data-tags="研究笔记,幼体,形态学"
+            >
+              <h3 class="note-title">示例：斑鳖幼体 / 亚成体形态观察</h3>
+              <div class="note-meta">类型：形态学笔记 · 来源：少量标本 / 照片 + 个人观察</div>
+              <p>
+                可以拿这里专门整理：背甲花纹、颜色、头部比例、眼睛位置等与中华鳖幼体的差异。
+                每个标本或照片给一个编号，方便后续对照。
+              </p>
+              <details class="note-details">
+                <summary>展开查看示例思路</summary>
+                <div class="note-body">
+                  <ul>
+                    <li>· 背甲纹路是否更偏环状浅纹，颜色偏黄或偏暖？</li>
+                    <li>· 头部比例是否更大，眼睛位置相对更靠前？</li>
+                    <li>· 皮肤质感、花纹在成长过程中如何变化？</li>
+                  </ul>
+                  <p>以后如果有新的照片、标本，直接补充到这篇笔记下面即可。</p>
+                </div>
+              </details>
+              <div class="note-tags">
+                <span>#幼体</span>
+                <span>#形态学</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 关于本站 -->
+      <section
+        id="about"
+        class="section section-card js-search-item"
+        data-tags="关于本站,规划"
+      >
+        <div class="section-header">
+          <div>
+            <div class="section-title">关于本站与未来规划</div>
+            <div class="section-sub">
+              学术网站那一栏常见的“About” + 保护机构那种“我们想做什么”的结合版。
+            </div>
+          </div>
+          <div class="section-remark">标签：站点说明 / 未来计划</div>
+        </div>
+        <div class="section-body grid-2">
+          <div class="sub-card">
+            <h3>本站定位</h3>
+            <p>
+              · 不代表任何机构立场；  
+              · 尽量忠实记录不同来源的信息与不确定性；  
+              · 服务对象：普通公众、龟鳖 / 两栖爬行爱好者、以及真正做研究或管理的人。
+            </p>
+            <p>
+              这里可以写你的缘起：你为什么开始做这个站、希望它对现实保护工作有怎样的帮助。
+            </p>
+          </div>
+          <div class="sub-card">
+            <h3>未来可以升级的方向（预留想法，不急着做）</h3>
+            <ul>
+              <li>· 做一个可检索的“标本 / 文献数据库”子页面。</li>
+              <li>· 做一张交互式地图，标出历史和现代记录点。</li>
+              <li>· 做一个 FAQ，把大众最常问的问题集中解答。</li>
+              <li>· 做“合作 / 支持”页，让愿意帮忙的人知道如何联系你。</li>
+            </ul>
+            <p>
+              现在最重要的，是先把资料和笔记慢慢填起来。架子已经搭好，随时可以往上加层。
+            </p>
+          </div>
+        </div>
+        <div class="footer">
+          本站内容目前由一名学生个人维护，难免有错误或疏漏。<br />
+          如果未来的你，或者其他研究者发现哪里有问题，欢迎狠狠纠正 —— 被“纠正”本身，就是资料库变得更扎实的方式之一。
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ============ 简单的站内搜索 + 标签过滤逻辑 ============ -->
+  <script>
+    // 说明：
+    // 1）所有需要被搜索 / 过滤的块，都加 class="js-search-item" 和 data-tags="逗号分隔标签"
+    // 2）搜索框：模糊匹配块内文字
+    // 3）标签：根据 data-tags 简单过滤
+    (function () {
+      const searchInput = document.getElementById("search-input");
+      const filterButtons = document.querySelectorAll(".filter-tag");
+      const items = document.querySelectorAll(".js-search-item");
+
+      let activeFilter = "all";
+
+      function normalize(text) {
+        return (text || "").toLowerCase();
+      }
+
+      function matchTag(tags, filter) {
+        if (!filter || filter === "all") return true;
+        if (!tags) return false;
+        return tags.indexOf(filter) !== -1;
+      }
+
+      function applyFilter() {
+        const keyword = normalize(searchInput.value.trim());
+        items.forEach((el) => {
+          const text = normalize(el.textContent);
+          const tags = el.getAttribute("data-tags") || "";
+          const tagOk = matchTag(tags, activeFilter);
+          const textOk = keyword ? text.indexOf(keyword) !== -1 : true;
+
+          el.style.display = tagOk && textOk ? "" : "none";
+        });
+      }
+
+      if (searchInput) {
+        searchInput.addEventListener("input", applyFilter);
+      }
+
+      filterButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          filterButtons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          activeFilter = btn.getAttribute("data-filter") || "all";
+          applyFilter();
+        });
+      });
+    })();
+  </script>
 </body>
-<!-- 文章与笔记（Notes） -->
-<section class="notes-section" id="notes">
-    <div class="section-header">
-        <h2>文章与笔记（Notes）</h2>
-        <p class="section-subtitle">
-            这里主要记录我在斑鳖调查、文献阅读和与越南团队交流中的一些个人笔记与整理。
-        </p>
-    </div>
-
-    <!-- 总览笔记：作者历史研究笔记（长期更新） -->
-    <article class="note-item">
-        <h3>作者历史研究笔记（长期更新）</h3>
-        <p class="note-meta">类型：个人长期研究备忘录｜状态：持续更新</p>
-        <p>
-            这一篇是整个资料库的总入口，用来汇总我在斑鳖相关历史文献、博物馆标本、野外记录和越南调查报告里的重要信息：
-            包括每一条可靠目击的时间和地点、不同水体的栖息地条件、各类传闻的可靠性评估，以及和 IMC / WCS 等团队交流时获取的一手消息。
-            可以把它理解成一个“工作日志 + 线索清单”，未来整理正式论文或报告时，所有素材都会从这里往外长出来。
-        </p>
-        <p>
-            目前已经初步整理的方向包括：越南几条关键河段（如 Da River 流域）的目击记录梳理，
-            Dong Mo / Xuan Khanh / Suoi Hai 等湖泊的监测动态，历史标本的重新比对，
-            以及斑鳖幼体形态特征的个人观察。随着新材料出现，这篇笔记会不断追加小节，而不是一次性写完。
-        </p>
-    </article>
-
-    <!-- 笔记 1：Da River 7 份目击记录 -->
-    <article class="note-item">
-        <h3>新增 7 份可靠的斑鳖目击记录（Da River 调查）</h3>
-        <p class="note-meta">
-            时间范围：2017–2023 年｜地点：越南 Da River 流域｜来源：访谈 + 漂浮摄像机调查报告
-        </p>
-        <p>
-            在一项针对 Da River 流域的龟鳖调查中，通过当地访谈和漂浮摄像机布设，共整理出 7 份相对可靠的斑鳖目击记录。
-            记录大多集中在 3–5 月旱季，目击者描述的个体体重普遍在 50–100 公斤之间，体型明显偏大，
-            基本可以排除幼体或小亚成体的可能性。
-        </p>
-        <p>
-            其中几条记录特别提到：大个体曾在沙质河滩上挖坑产卵，或者在同一河段反复出现。
-            这些信息叠加在一起，意味着该河段极有可能存在一群尚未被正式确认的繁殖种群，
-            而不是一只偶尔路过的个体。下一步最关键的工作，是在这些坐标附近做系统的 eDNA 采样和长时间红外相机布设，
-            同时为当地队伍提供一些基础的经费和技术支持。
-        </p>
-    </article>
-
-    <!-- 笔记 2：越南斑鳖重大新闻更新 -->
-    <article class="note-item">
-        <h3>越南斑鳖重大新闻更新：Dong Mo / Xuan Khanh 等湖区的最新进展</h3>
-        <p class="note-meta">
-            整理时间：2024-10-18｜地点：河内市及周边湖区｜来源：官方通报 + NGO 报告
-        </p>
-        <p>
-            河内市畜牧兽医局（农业与环境部）近期在 Doai Phuong 地区召开
-            “保护同莫湖和春庆湖斑鳖” 宣传会，通报了越南斑鳖的最新情况，
-            并更新了与两家非政府组织（IMC、WCS）的合作协议以及后续保护计划。
-            Suoi Hai 湖在 2024 年进行了 24 次无人机巡查，累计飞行约 410 分钟，
-            同时在多个区域布设相机、拍摄了数百张照片，用于评估水深、湖底障碍物和淤泥厚度等环境条件。
-        </p>
-        <p>
-            在 Dong Mo 湖，在发现还剑湖龟尸体以后，IMC 工作人员和当地渔民多次报告看到至少一只其他大型“海龟”；
-            在 Xuan Khanh 湖也有多次类似的目击记录。官方文件确认 Dong Mo 和 Xuan Khanh
-            是两处斑鳖重点保护水体，要求农业与环境部门继续与 IMC、WCS 以及周边乡镇密切协作，
-            把原本 2018–2020 年的斑鳖保护计划延伸到 2030 年左右，重点包括生物学研究、相机陷阱监测和长期宣传教育等内容。
-        </p>
-    </article>
-
-    <!-- 笔记 3：关于斑鳖幼体特征的讨论 -->
-    <article class="note-item">
-        <h3>关于斑鳖幼体的一些特征讨论（个人形态学笔记）</h3>
-        <p class="note-meta">
-            整理时间：2025-01-xx｜地点：广东｜材料来源：3 具幼体标本影像 + 越南团队分享的野外照片
-        </p>
-        <p>
-            这篇笔记主要根据几具斑鳖幼体标本的照片，以及越南团队分享的野外影像，对“幼体长什么样”做了一些个人整理。
-            总体印象是：斑鳖幼体的背甲非常漂亮，甲面有明显的浅色环纹或不规则斑点，
-            颜色多为浅黄、浅灰或淡橄榄色，与深色甲面形成比较清晰的对比；
-            而在成体身上，这些花纹几乎完全消失，只剩下一整块偏灰的“石板色”。
-        </p>
-        <p>
-            形态上，幼体的背甲整体更接近圆形，边缘过渡柔和，而不是成体那种拉长的椭圆形；
-            头部比例相对更大，眼睛位置更靠前，更有“幼态化”的感觉。
-            皮肤质地方面，多数成体标本的皮肤看上去比较平整，而幼体尤其是颈部和背面则颗粒感更明显，
-            细节更丰富（当然这也和保存条件、标本状态有关）。
-            最后我把这些特征和中华鳖幼体做了简单对比，感觉在高质量照片下，两者其实可以通过背甲纹路和头部比例区分开来，
-            只是现实中我们大概再也很难看到新的斑鳖幼体了。
-        </p>
-    </article>
-</section>
-
-  
 </html>
