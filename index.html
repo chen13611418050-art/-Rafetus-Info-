@@ -1,88 +1,876 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <title>中华斑鳖资料库 | Rafetus swinhoei Archive</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.7;
-            max-width: 900px;
-            margin: auto;
-            padding: 30px;
-        }
-        h1 {
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
-        .subtitle {
-            font-size: 18px;
-            color: #555;
-            margin-bottom: 30px;
-        }
-        .section {
-            margin-top: 40px;
-        }
-        .gallery img {
-            width: 250px;
-            margin: 10px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-        }
-        .nav a {
-            margin-right: 15px;
-            text-decoration: none;
-            color: #0070f3;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>中华斑鳖资料库 | Rafetus swinhoei Archive</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="中华斑鳖资料库：全球最稀有淡水龟类 Rafetus swinhoei 的独立资料档案库，整理历史文献、标本记录、野外线索与最新研究进展。" />
+  <style>
+    /* ====== 全局样式 ====== */
+    :root {
+      --bg-main: #0f172a;       /* 深色顶部 */
+      --bg-body: #f3f4f6;       /* 浅灰背景 */
+      --bg-card: #ffffff;       /* 卡片背景 */
+      --text-main: #0f172a;     /* 主文字颜色 */
+      --text-muted: #6b7280;    /* 次要文字 */
+      --accent: #16a34a;        /* 绿色点缀 */
+      --accent-soft: #dcfce7;   /* 绿色浅底 */
+      --border-subtle: #e5e7eb; /* 卡片边框 */
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow-soft: 0 12px 30px rgba(15, 23, 42, 0.10);
+      --max-width: 980px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", system-ui, -apple-system, "PingFang SC",
+        "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+      background: var(--bg-body);
+      color: var(--text-main);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 18px;
+    }
+
+    /* ====== 顶部导航 ====== */
+    .site-header {
+      background: radial-gradient(circle at top left, #1d283a 0, #020617 55%);
+      color: #e5e7eb;
+      padding: 18px 0 22px;
+      box-shadow: 0 12px 35px rgba(15, 23, 42, 0.45);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-title {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .brand-sub {
+      font-size: 12px;
+      color: #9ca3af;
+    }
+
+    .nav {
+      display: flex;
+      gap: 12px;
+      font-size: 13px;
+    }
+
+    .nav a {
+      padding: 6px 12px;
+      border-radius: 999px;
+      color: #e5e7eb;
+      border: 1px solid transparent;
+      transition: all 0.18s ease;
+      white-space: nowrap;
+    }
+
+    .nav a:hover {
+      border-color: rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    /* ====== hero 区 ====== */
+    .hero {
+      background: radial-gradient(circle at top, #0f172a 0, #020617 60%);
+      color: #e5e7eb;
+      padding: 44px 0 38px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.8fr);
+      gap: 28px;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .nav {
+        display: none;
+      }
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.8);
+      margin-bottom: 12px;
+    }
+
+    .hero-tag-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+    }
+
+    .hero-title {
+      font-size: clamp(28px, 4.2vw, 34px);
+      margin: 0 0 10px;
+      letter-spacing: 0.12em;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      color: #9ca3af;
+      margin: 0 0 18px;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 11px;
+      color: #9ca3af;
+      margin-bottom: 18px;
+    }
+
+    .hero-meta span {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      font-size: 13px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.18s ease;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      border-color: rgba(34, 197, 94, 0.85);
+      color: #052e16;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(22, 163, 74, 0.45);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 32px rgba(22, 163, 74, 0.55);
+      filter: brightness(1.02);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.8);
+      border-color: rgba(148, 163, 184, 0.7);
+      color: #e5e7eb;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 1);
+    }
+
+    .hero-note {
+      margin-top: 16px;
+      font-size: 12px;
+      color: #9ca3af;
+    }
+
+    .hero-note strong {
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .hero-panel {
+      border-radius: 20px;
+      background: radial-gradient(circle at top left, #1e293b 0, #020617 60%);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      padding: 16px 16px 14px;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.75);
+    }
+
+    .hero-panel-title {
+      font-size: 13px;
+      margin-bottom: 8px;
+      color: #e5e7eb;
+    }
+
+    .hero-panel-sub {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-bottom: 10px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .stat {
+      background: rgba(15, 23, 42, 0.85);
+      border-radius: 14px;
+      padding: 9px 10px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+    }
+
+    .stat-label {
+      font-size: 10px;
+      color: #9ca3af;
+    }
+
+    .stat-value {
+      font-size: 16px;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    .hero-quote {
+      margin-top: 8px;
+      font-size: 11px;
+      color: #9ca3af;
+      border-top: 1px dashed rgba(75, 85, 99, 0.8);
+      padding-top: 8px;
+    }
+
+    .hero-quote strong {
+      color: #e5e7eb;
+    }
+
+    /* ====== 主体区块基础 ====== */
+    .section {
+      padding: 28px 0;
+    }
+
+    .section-header {
+      margin-bottom: 16px;
+    }
+
+    .section-kicker {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      margin: 0 0 4px;
+    }
+
+    .section-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
+      gap: 18px;
+    }
+
+    @media (max-width: 768px) {
+      .grid-2 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 16px 18px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      gap: 8px;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .card-tag {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #166534;
+      border: 1px dashed #16a34a;
+      white-space: nowrap;
+    }
+
+    .card-body {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .list-compact {
+      list-style: none;
+      padding: 0;
+      margin: 6px 0 0;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .list-compact li {
+      margin-bottom: 4px;
+      display: flex;
+      gap: 6px;
+    }
+
+    .list-bullet {
+      width: 4px;
+      height: 4px;
+      border-radius: 999px;
+      background: #9ca3af;
+      margin-top: 8px;
+      flex-shrink: 0;
+    }
+
+    /* ====== 图片区域 ====== */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .photo-item {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      background: #020617;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .photo-img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      filter: saturate(1.02);
+    }
+
+    .photo-caption {
+      padding: 6px 9px 7px;
+      font-size: 11px;
+      color: var(--text-muted);
+      background: #f9fafb;
+    }
+
+    .photo-caption strong {
+      color: #111827;
+    }
+
+    /* ====== 时间线 ====== */
+    .timeline {
+      border-left: 2px solid #d1d5db;
+      padding-left: 14px;
+      margin: 8px 0 0;
+      font-size: 13px;
+    }
+
+    .timeline-item {
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -15px;
+      top: 5px;
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: #f97316;
+      border: 2px solid #fef3c7;
+      box-shadow: 0 0 0 4px rgba(248, 180, 72, 0.25);
+    }
+
+    .timeline-year {
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .timeline-text {
+      color: var(--text-muted);
+    }
+
+    /* ====== 文献与标本列表 ====== */
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .pill {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      background: #f9fafb;
+      color: #4b5563;
+    }
+
+    .muted {
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    /* ====== 脚注 ====== */
+    footer {
+      padding: 18px 0 22px;
+      font-size: 11px;
+      color: #6b7280;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-
-<h1>中华斑鳖资料库</h1>
-<div class="subtitle">Rafetus swinhoei • 全球最稀有淡水龟类资料库（独立维护）</div>
-
-<p>
-本网站用于整理所有与中华斑鳖（Rafetus swinhoei）有关的历史文献、标本记录、科研进展、
-目击与访谈信息、eDNA 调查线索，以及相关照片档案。目标是建立一个公开透明、持续更新的物种数据库。
-</p>
-
-<div class="nav">
-    <a href="#images">图片库</a>
-    <a href="#history">历史文献</a>
-    <a href="#specimens">标本记录</a>
-    <a href="#research">科研进展</a>
-</div>
-
-<!-- 图片展示区（你上传照片后会自动显示） -->
-<div class="section" id="images">
-    <h2>图片资料库（Photos）</h2>
-    <p>以下为已上传的斑鳖相关照片。</p>
-
-    <div class="gallery">
-        <!-- 示例照片（等你上传后更换路径） -->
-        <img src="images/sample1.jpg" alt="Sample Image 1">
-        <img src="images/sample2.jpg" alt="Sample Image 2">
+<div class="page">
+  <!-- 顶部导航 -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-title">中华斑鳖资料库</div>
+        <div class="brand-sub">Rafetus swinhoei · independent archive</div>
+      </div>
+      <nav class="nav">
+        <a href="#overview">概览</a>
+        <a href="#photos">图片</a>
+        <a href="#history">时间线</a>
+        <a href="#literature">文献与标本</a>
+        <a href="#about">关于项目</a>
+      </nav>
     </div>
+  </header>
 
-    <p>（你可以继续上传更多照片到 <code>/images</code> 文件夹，它们会在这里展示。）</p>
+  <!-- hero 区 -->
+  <section class="hero" id="overview">
+    <div class="container hero-inner">
+      <div>
+        <div class="hero-tag">
+          <span class="hero-tag-dot"></span>
+          <span>全球最稀有淡水龟类 · 独立档案工程</span>
+        </div>
+        <h1 class="hero-title">中华斑鳖资料库</h1>
+        <p class="hero-subtitle">
+          本站由个人独立维护，专门记录与中华斑鳖（<em>Rafetus swinhoei</em>）相关的一切——历史文献、标本记录、
+          野外线索、科研进展与图像档案。目标不是“讲一个好故事”，而是尽量把能查到的事实放在同一个地方。
+        </p>
+        <div class="hero-meta">
+          <span>中文整理 · 长期更新</span>
+          <span>非官方 · 欢迎引用与更正</span>
+          <span>聚焦：中国 / 越南及周边水系</span>
+        </div>
+        <div class="hero-buttons">
+          <a href="#photos" class="btn-primary">查看图片资料库</a>
+          <a href="#literature" class="btn-ghost">浏览文献与标本线索</a>
+        </div>
+        <div class="hero-note">
+          <strong>说明：</strong>本站暂不公开敏感地点坐标与未核实的存活线索，只做“信息索引”，而不是“打卡名单”。
+        </div>
+      </div>
+
+      <aside class="hero-panel">
+        <div class="hero-panel-title">目前收录内容（持续整理中）</div>
+        <div class="hero-panel-sub">这个数字不会很快变大，但会尽量变得更准确。</div>
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-label">历史文献条目</div>
+            <div class="stat-value">0+</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">标本 / 记录点</div>
+            <div class="stat-value">0+</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">公开图像档案</div>
+            <div class="stat-value">0+</div>
+          </div>
+        </div>
+        <div class="hero-quote">
+          <strong>个人立场：</strong>与其在新闻里反复感叹“世界上最后几只”，不如把有限的信息一点一点补全。
+          这是一个学生在业余时间慢慢搭起来的档案，难免有遗漏和判断偏差，欢迎任何指正。
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <main>
+    <!-- 图片资料库 -->
+    <section class="section" id="photos">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">PHOTO ARCHIVE</div>
+          <h2 class="section-title">图片资料库（Photos）</h2>
+          <p class="section-desc">
+            以下为与斑鳖相关的部分图片。为了保护现场与个体安全，部分照片为裁剪版或去除了敏感信息。
+            更高分辨率图像及原始信息可在合适的学术或保护语境中另行共享。
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">当前示例图片</div>
+            <div class="card-tag">如何替换为你自己的照片？</div>
+          </div>
+          <div class="card-body">
+            <p class="muted">
+              你可以把自己的照片上传到 <code>images/</code> 文件夹，然后在下面几条 <code>&lt;img&gt;</code> 的
+              <code>src</code> 改成对应文件名。例如 <code>images/rafetus-skull.jpg</code>。
+            </p>
+
+            <div class="photo-grid">
+              <!-- 示例 1：请把文件名改成你真实的图片名 -->
+              <figure class="photo-item">
+                <img src="images/rafetus-sample-1.jpg" alt="斑鳖相关图片示例 1" class="photo-img" />
+                <figcaption class="photo-caption">
+                  <strong>斑鳖头骨 / 标本视角</strong><br />
+                  这里可以写一点说明：比如标本来源的大致地区、年代以及可以看出的形态特征。（文件名：rafetus-sample-1.jpg）
+                </figcaption>
+              </figure>
+
+              <!-- 示例 2 -->
+              <figure class="photo-item">
+                <img src="images/rafetus-sample-2.jpg" alt="斑鳖相关图片示例 2" class="photo-img" />
+                <figcaption class="photo-caption">
+                  <strong>历史照片 / 圈养个体</strong><br />
+                  用一句话解释这张图的背景，例如：拍摄年代、所属机构、是否为已知个体。（文件名：rafetus-sample-2.jpg）
+                </figcaption>
+              </figure>
+
+              <!-- 示例 3 -->
+              <figure class="photo-item">
+                <img src="images/rafetus-sample-3.jpg" alt="斑鳖相关图片示例 3" class="photo-img" />
+                <figcaption class="photo-caption">
+                  <strong>栖息地环境 / 水系线索</strong><br />
+                  如果是河湖环境照，可以只强调“环境类型”，避免给出过于精确的地理线索。（文件名：rafetus-sample-3.jpg）
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 时间线 -->
+    <section class="section" id="history">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">TIMELINE</div>
+          <h2 class="section-title">简要时间线（持续补充中）</h2>
+          <p class="section-desc">
+            这里只放一个极简时间线，帮自己和其他人快速对齐：斑鳖的故事大致发生在怎样的历史轴上。
+            细节部分将在文献与标本章节逐步展开。
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">从命名、误解，到“最后几只”的叙事</div>
+            <div class="card-tag">这里只是草稿，会慢慢丰富</div>
+          </div>
+          <div class="card-body">
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-year">19 世纪末 – 20 世纪初</div>
+                <div class="timeline-text">
+                  早期标本与文献记录出现，命名、分类与产地记载并不完全一致，也为后来的混乱埋下伏笔。
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-year">20 世纪中后期</div>
+                <div class="timeline-text">
+                  中国与越南陆续有零散报道与标本，但很少有人真正系统梳理整个物种的分布与命运，大部分记录只存在于博物馆抽屉和地方记忆里。
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-year">21 世纪初以后</div>
+                <div class="timeline-text">
+                  “世界上仅剩几只”的说法开始进入大众视野。圈养配对、野外调查、eDNA 尝试等工作逐渐展开，
+                  但关于过去的那一百多年，仍然有大量空白需要补课。
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-year">现在</div>
+                <div class="timeline-text">
+                  这个小小的资料库只是一个起点：尽可能把能查到的文献、标本和记录一条条整理出来，
+                  为未来真正的系统研究和保护行动打一点基础。
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 文献与标本 -->
+    <section class="section" id="literature">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">LITERATURE & SPECIMENS</div>
+          <h2 class="section-title">文献与标本记录（框架预留）</h2>
+          <p class="section-desc">
+            这一部分未来会按照「历史文献」「博物馆标本」「现代记录 / 报道」「eDNA 与调查项目」几个维度拆开。
+            目前只是把结构先搭好，方便后续往里填具体条目。
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">历史文献（Historical Literature）</div>
+              <div class="card-tag">准备加入的内容</div>
+            </div>
+            <div class="card-body">
+              <p class="muted">
+                包括最早的命名文献、后续的修订、分布记载，以及那些在今天几乎被人遗忘的小段文字。
+                很多时候，一条不起眼的注释里藏着一个“消失水系”的线索。
+              </p>
+              <ul class="list-compact">
+                <li>
+                  <span class="list-bullet"></span>
+                  <span>按年代整理主要文献，给出简短中文摘要和原文出处，方便快速定位。</span>
+                </li>
+                <li>
+                  <span class="list-bullet"></span>
+                  <span>对旧文献中的地名、方位等进行现代地理对应，标记不确定性。</span>
+                </li>
+                <li>
+                  <span class="list-bullet"></span>
+                  <span>记录每篇文献对斑鳖的称呼、分类处理和可能的误判。</span>
+                </li>
+              </ul>
+
+              <div class="pill-row">
+                <span class="pill">原始命名 / 描述</span>
+                <span class="pill">旧地名与新地名对应</span>
+                <span class="pill">含糊记录的再解读</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">标本与记录点（Museum Specimens）</div>
+              <div class="card-tag">不会公开精确坐标</div>
+            </div>
+            <div class="card-body">
+              <p class="muted">
+                标本是“不会再动的证据”。这里会尽量收集各博物馆和私人收藏中与斑鳖相关的藏品信息：
+                编号、采集年代、大致产地、原始标签内容，以及可能存在的误定种情况。
+              </p>
+              <ul class="list-compact">
+                <li>
+                  <span class="list-bullet"></span>
+                  <span>按收藏机构整理：如某博物馆的甲骨、完整个体、幼体标本等。</span>
+                </li>
+                <li>
+                  <span class="list-bullet"></span>
+                  <span>用模糊化的地理信息（流域/省份等级）而不是精确点位。</span>
+                </li>
+                <li>
+                  <span class="list-bullet"></span>
+                  <span>对于存疑标本，会在备注中说明“为什么值得怀疑”。</span>
+                </li>
+              </ul>
+
+              <div class="pill-row">
+                <span class="pill">博物馆编号索引</span>
+                <span class="pill">私人收藏线索</span>
+                <span class="pill">疑似 / 存疑条目</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 16px;">
+          <div class="card-header">
+            <div class="card-title">调查与科研项目（Research & Surveys）</div>
+            <div class="card-tag">包括 eDNA、访谈和现代调查</div>
+          </div>
+          <div class="card-body">
+            <p class="muted">
+              这里会记录近些年的调查与科研工作：包括 eDNA 尝试、问卷访谈、地方保护区的摸排、
+              以及学界与保护机构之间的合作。很多项目本身不公开详细报告，但至少可以给一个“存在过”的记录。
+            </p>
+            <ul class="list-compact">
+              <li>
+                <span class="list-bullet"></span>
+                <span>项目级别：时间、负责机构、主要方法（如 eDNA / 实地捕获 / 访谈）以及公开程度。</span>
+              </li>
+              <li>
+                <span class="list-bullet"></span>
+                <span>只记录已经公开的信息，不泄露未授权的内部细节。</span>
+              </li>
+              <li>
+                <span class="list-bullet"></span>
+                <span>个人参与的部分会单独标注，和“旁观者整理”的内容区分开来。</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 关于项目 -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">ABOUT</div>
+          <h2 class="section-title">关于这个小小的资料库</h2>
+          <p class="section-desc">
+            和大型机构的网站不同，这里没有团队、没有公关语言，只有一个人慢慢往里填东西。
+            正因为体量很小，反而可以在某些细节上稍微“固执”一点。
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">维护者的想法</div>
+              <div class="card-tag">一个学生版的“物种档案工程”</div>
+            </div>
+            <div class="card-body">
+              <p class="muted">
+                斑鳖这个物种的命运，已经足够戏剧化了。外界不缺故事，但缺一个相对完整的“资料索引”。
+                于是就有了这个网站：尽可能在不打扰任何人的前提下，把零散的信息慢慢拼起来。
+              </p>
+              <ul class="list-compact">
+                <li>
+                  <span class="list-bullet"></span>
+                  <span>不会刻意强调“最后几只”的悲情，而是把更多篇幅留给事实本身。</span>
+                </li>
+                <li>
+                  <span class="list-bullet"></span>
+                  <span>宁愿慢一点、少一点，也尽量避免把没有核实的消息当成结论。</span>
+                </li>
+                <li>
+                  <span class="list-bullet"></span>
+                  <span>欢迎任何形式的补充、更正和反驳——哪怕只是提醒某条线索有问题。</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">联系与致谢</div>
+              <div class="card-tag">这里刻意不放具体名字</div>
+            </div>
+            <div class="card-body">
+              <p class="muted">
+                这个资料库能慢慢搭起来，很大程度上是因为前辈们几几十年间留下的标本、论文、田野记录，
+                以及愿意花时间和一个学生聊天、解释背景的老师和朋友。
+              </p>
+              <ul class="list-compact">
+                <li>
+                  <span class="list-bullet"></span>
+                  <span>如果你是相关领域研究者 / 保护工作者，有任何希望更正或隐藏的内容，可以随时联系维护者。</span>
+                </li>
+                <li>
+                  <span class="list-bullet"></span>
+                  <span>在不违反保密与安全前提下，本站也很乐意为学术研究、保护项目或科普写作提供资料整理帮助。</span>
+                </li>
+              </ul>
+              <p class="muted">
+                暂时不在页面上公开个人邮箱和社交账号，避免把注意力从“物种本身”转移到“网站作者”身上。
+                如果你真的需要联系，应该已经有办法找到我。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      中华斑鳖资料库 · Rafetus swinhoei Archive<br />
+      这是一个学生在业余时间维护的长期小项目，欢迎引用，也欢迎挑错。
+    </div>
+  </footer>
 </div>
-
-<hr>
-
-<div class="section" id="history">
-    <h2>历史文献（Historical Literature）</h2>
-    <p>你可以在这里添加 PDF、扫描件、文献摘要等内容。</p>
-</div>
-
-<div class="section" id="specimens">
-    <h2>标本记录（Museum Specimens）</h2>
-    <p>未来可以在这里整理各国家博物馆的中华斑鳖标本编号与信息。</p>
-</div>
-
-<div class="section" id="research">
-    <h2>科研进展（Research Updates）</h2>
-    <p>包括 eDNA、访谈、公开报道以及实地调查进展。</p>
-</div>
-
 </body>
 </html>
