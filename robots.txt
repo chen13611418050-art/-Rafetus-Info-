@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chen3611489050-art.github.io/Rafetus-Info/sitemap.xml
