@@ -1331,46 +1331,64 @@
         </section>
 
         <!-- 标本与影像：预留图片位 -->
-        <section id="gallery" class="section">
-          <h2>
-            标本与影像 · Rafetus 图库占位
-            <span class="badge">图片占位</span>
-          </h2>
-          <p class="section-lead">
-            这里先留出 3×N 的图片网格，方便你之后把各类标本照片、幼体壳纹照片、博物馆老照片逐渐填进去。
-          </p>
-          <div class="card card--soft">
-            <div class="card-body">
-              <div class="image-grid">
-                <div class="image-placeholder">
- <div class="image-placeholder">
-    <img src="img/rafetus-suzhou-01.jpg" alt="苏州动物园斑鳖" class="gallery-img" loading="lazy">
-    <p>图 2：苏州动物园雄性斑鳖（已故个体的标本保存照片）</p>
-</div>
+       <section id="gallery" class="section">
+    <h2>
+        标本与影像 · Rafetus 图库
+        <span class="badge">图片展区</span>
+    </h2>
+    <p class="section-lead">
+        这里展示斑鳖幼体、成年个体标本以及野外影像，后续可以继续补充博物馆藏品照片、历史档案和调查现场记录。
+    </p>
 
+    <div class="card card--soft">
+        <div class="card-body">
+            <div class="image-grid">
 
-              <div class="image-placeholder">
-    <img src="img/rafetus-juvenile-01.jpg" alt="斑鳖幼体特写" class="gallery-img" loading="lazy">
-    <p>图 1：斑鳖幼体形态（完整外观特征）</p>
-</div>
+                <!-- 图 1：幼体形态 -->
+                <div class="image-placeholder">
+                    <img
+                        src="images/rafetus-juvenile-01.jpg"
+                        alt="斑鳖幼体形态特写"
+                        class="gallery-img"
+                        loading="lazy"
+                    >
+                    <p class="img-caption">
+                        图 1：斑鳖幼体形态特写 —— 体型尚小，但已可见典型的橄榄色背甲和头部黄斑纹路。
+                    </p>
+                </div>
+
+                <!-- 图 2：苏州动物园雄性个体 -->
+                <div class="image-placeholder">
+                    <img
+                        src="images/rafetus-suzhou-01.jpg"
+                        alt="苏州动物园雄性斑鳖标本"
+                        class="gallery-img"
+                        loading="lazy"
+                    >
+                    <p class="img-caption">
+                        图 2：苏州动物园雄性斑鳖 —— 已经死亡的长江种群个体，通过标本和影像继续保存其形态信息。
+                    </p>
+                </div>
+
+                <!-- 预留未来：北京 / 越南 / 红河等照片 -->
+                <div class="image-placeholder">
+                    <div class="placeholder-inner">
+                        <p>预留位：北京动物园个体 / 还剑湖个体照片</p>
+                        <p class="placeholder-note">后续可按图 3、图 4 的形式补充高清大图。</p>
+                    </div>
+                </div>
 
                 <div class="image-placeholder">
-                  这里预留：<br />博物馆头骨标本<br />（img/rafetus-skull-01.jpg）
+                    <div class="placeholder-inner">
+                        <p>预留位：红河流域调查现场 / eDNA 采样照片</p>
+                        <p class="placeholder-note">也可以放调查队合影、采样点环境照片。</p>
+                    </div>
                 </div>
-                <div class="image-placeholder">
-                  这里预留：<br />越南湖泊环境照片<br />（img/vietnam-lake-01.jpg）
-                </div>
-                <div class="image-placeholder">
-                  这里预留：<br />历史文献扫描节选<br />（img/rafetus-paper-01.jpg）
-                </div>
-              </div>
-              <p class="footnote">
-                <strong>如何实际使用：</strong>你只要把真实图片上传到 <code>img/</code> 文件夹，并把上面这些占位 div 换成
-                <code>&lt;img src="img/xxx.jpg" alt="..." /&gt;</code> 即可。
-              </p>
+
             </div>
-          </div>
-        </section>
+        </div>
+    </div>
+</section>
 
         <!-- 保护行动 & 建议 -->
         <section id="conservation" class="section">
