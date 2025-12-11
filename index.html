@@ -2,51 +2,52 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <title>斑鳖档案 · Rafetus swinhoei</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>斑鳖资料档案 | Rafetus swinhoei Archive</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="斑鳖（Rafetus swinhoei）专题档案网站：物种百科、历史时间线、红河与越南线索、标本与影像、保护行动与研究笔记。"
+    content="斑鳖（Rafetus swinhoei）中文档案站：物种百科、历史时间线、红河与越南最新进展、学术文献与作者研究笔记。"
   />
+
   <style>
     :root {
-      --bg: #05070b;
-      --bg-elevated: #0b0f18;
-      --bg-soft: #101624;
-      --border-subtle: #1a2335;
-      --accent: #45c3b8;   /* 主色：青绿色 */
-      --accent-soft: rgba(69, 195, 184, 0.12);
-      --accent-strong: #2a9c8f;
-      --text-main: #f4f6ff;
-      --text-muted: #a7b0c6;
-      --text-soft: #7e889e;
+      --bg: #050814;
+      --bg-elevated: #0b1020;
+      --bg-soft: #10182a;
+      --accent: #36c2ff;
+      --accent-soft: rgba(54, 194, 255, 0.16);
+      --accent-strong: #4de0ff;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --text-main: #f5f7ff;
+      --text-soft: #b3bdd9;
+      --text-faint: #7b88aa;
       --danger: #ff6b81;
-      --chip-bg: #141c2c;
-      --shadow-soft: 0 18px 50px rgba(0, 0, 0, 0.55);
       --radius-lg: 18px;
-      --radius-xl: 22px;
-      --radius-pill: 999px;
-      --nav-height: 62px;
-      --max-width: 1080px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --shadow-soft: 0 22px 45px rgba(0, 0, 0, 0.45);
+      --shadow-subtle: 0 10px 20px rgba(0, 0, 0, 0.35);
+      --transition-fast: 0.18s ease-out;
+      --content-width: 1120px;
     }
 
     * {
       box-sizing: border-box;
     }
 
-    html, body {
+    body {
       margin: 0;
       padding: 0;
-      background: radial-gradient(circle at top, #151c30 0, #05070b 52%, #020308 100%);
-      color: var(--text-main);
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui,
-        -system-ui, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
         sans-serif;
+      background: radial-gradient(circle at top, #151b3b 0, #050814 55%);
+      color: var(--text-main);
       -webkit-font-smoothing: antialiased;
     }
 
     a {
-      color: var(--accent);
+      color: var(--accent-strong);
       text-decoration: none;
     }
 
@@ -54,1567 +55,1196 @@
       text-decoration: underline;
     }
 
-    body {
-      padding: 0 16px 64px;
-    }
-
     .page {
-      max-width: var(--max-width);
+      max-width: var(--content-width);
       margin: 0 auto;
+      padding: 20px 16px 60px;
     }
 
     /* 顶部导航 */
 
-    .top-nav {
+    .site-header {
       position: sticky;
       top: 0;
       z-index: 40;
-      height: var(--nav-height);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 0;
-      background: linear-gradient(to bottom,
-          rgba(5, 7, 11, 0.96),
-          rgba(5, 7, 11, 0.82),
-          transparent);
-      backdrop-filter: blur(14px);
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(5, 8, 20, 0.96),
+        rgba(5, 8, 20, 0.7),
+        transparent
+      );
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    .brand {
+    .site-header-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 10px 16px 8px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 14px;
     }
 
     .brand-mark {
       width: 32px;
       height: 32px;
-      border-radius: 14px;
-      background:
-        radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.28), transparent 55%),
-        radial-gradient(circle at 80% 80%, rgba(69, 195, 184, 0.9), transparent 60%),
-        radial-gradient(circle at 0% 100%, rgba(23, 105, 190, 0.9), transparent 60%);
-      box-shadow: 0 0 0 1px rgba(157, 210, 255, 0.18),
-        0 10px 25px rgba(0, 0, 0, 0.65);
-      position: relative;
-      overflow: hidden;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #8af4ff 0, #008cff 35%, #00173a 80%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 1px rgba(138, 244, 255, 0.35),
+        0 10px 26px rgba(0, 0, 0, 0.7);
+      font-weight: 700;
+      font-size: 17px;
     }
 
-    .brand-mark::after {
+    .brand-mark span {
+      transform: translateY(-0.5px);
+    }
+
+    .site-title-block {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .site-title {
+      font-size: 17px;
+      font-weight: 650;
+      letter-spacing: 0.03em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .site-title span.en {
+      font-size: 12px;
+      color: var(--text-faint);
+      font-weight: 500;
+    }
+
+    .site-subtitle {
+      font-size: 12px;
+      color: var(--text-faint);
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .header-search {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 220px;
+    }
+
+    .search-input-wrap {
+      position: relative;
+      flex: 1;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 7px 26px 7px 24px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(7, 11, 26, 0.86);
+      color: var(--text-main);
+      font-size: 12px;
+      outline: none;
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.5);
+    }
+
+    .search-input::placeholder {
+      color: var(--text-faint);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 8px;
+      top: 50%;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      transform: translateY(-50%);
+    }
+
+    .search-icon::after {
       content: "";
       position: absolute;
-      inset: 32% 26%;
+      width: 6px;
+      height: 2px;
       border-radius: 999px;
-      border: 1.5px solid rgba(2, 7, 14, 0.72);
-      transform: rotate(-16deg);
+      background: var(--accent);
+      transform: rotate(45deg) translate(2px, 5px);
+      transform-origin: center;
     }
 
-    .brand-text-main {
-      font-weight: 600;
-      font-size: 18px;
-      letter-spacing: 0.04em;
-    }
-
-    .brand-text-sub {
+    .search-hint {
       font-size: 11px;
-      color: var(--text-soft);
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      font-size: 13px;
-    }
-
-    .nav-pill {
-      padding: 6px 10px;
-      border-radius: var(--radius-pill);
-      background: rgba(13, 20, 35, 0.9);
-      border: 1px solid transparent;
-      color: var(--text-soft);
-      cursor: pointer;
+      color: var(--text-faint);
       white-space: nowrap;
     }
 
-    .nav-pill:hover {
-      border-color: rgba(104, 181, 255, 0.6);
-      color: #e3ecff;
-    }
-
-    .nav-pill--primary {
-      background: linear-gradient(120deg, var(--accent-strong), #5fd3c7);
-      color: #021015;
-      font-weight: 500;
-      box-shadow: 0 10px 30px rgba(26, 182, 162, 0.4);
-    }
-
-    .nav-pill--primary:hover {
-      filter: brightness(1.04);
-    }
-
-    /* 布局 */
-
-    .layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
-      gap: 20px;
-      margin-top: 10px;
-    }
-
-    @media (max-width: 820px) {
-      .layout {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      body {
-        padding: 0 12px 40px;
-      }
-      .top-nav {
-        align-items: flex-start;
-        gap: 10px;
-        flex-direction: column;
-      }
-    }
-
-    /* 共享卡片样式 */
-
-    .card {
-      border-radius: var(--radius-xl);
-      background: radial-gradient(circle at top left,
-          rgba(111, 214, 200, 0.03),
-          transparent 60%),
-        var(--bg-elevated);
-      border: 1px solid rgba(84, 112, 164, 0.24);
-      box-shadow: var(--shadow-soft);
-      padding: 18px 20px 18px;
-    }
-
-    .card + .card {
-      margin-top: 16px;
-    }
-
-    .card--soft {
-      background: rgba(6, 10, 20, 0.87);
-      border-style: dashed;
-    }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-      gap: 10px;
-    }
-
-    .card-title {
-      font-size: 17px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .card-tag {
-      font-size: 11px;
-      padding: 3px 8px;
-      border-radius: var(--radius-pill);
-      background: var(--accent-soft);
-      color: var(--accent);
-      border: 1px solid rgba(116, 208, 199, 0.6);
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-    }
-
-    .card-body {
-      font-size: 14px;
-      line-height: 1.7;
-      color: var(--text-muted);
-    }
-
-    .pill-row {
+    .nav-pill-row {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 16px 10px;
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin: 8px 0 0;
+      gap: 6px;
     }
 
-    .info-pill {
+    .nav-pill {
       font-size: 11px;
       padding: 4px 9px;
-      border-radius: var(--radius-pill);
-      background: var(--chip-bg);
-      border: 1px solid rgba(81, 116, 169, 0.6);
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(10, 17, 40, 0.9);
       color: var(--text-soft);
+      cursor: pointer;
     }
 
-    .info-pill strong {
-      color: #dde5ff;
-      font-weight: 500;
+    .nav-pill:hover {
+      border-color: var(--accent);
+      color: var(--accent-strong);
     }
 
-    /* Hero 区域 */
+    /* 主区域 */
 
-    .hero-title {
-      font-size: 28px;
-      font-weight: 650;
-      letter-spacing: 0.03em;
-      margin: 4px 0 6px;
+    .hero {
+      margin-top: 16px;
+      margin-bottom: 22px;
+      padding: 18px 18px 20px;
+      border-radius: 24px;
+      background: radial-gradient(circle at 20% 0, #2848a8 0, #0b1020 42%, #050814 95%);
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(260px, 1.7fr);
+      gap: 20px;
     }
 
-    .hero-subtitle {
+    .hero-main h1 {
+      font-size: 26px;
+      margin: 0 0 8px;
+    }
+
+    .hero-main .tagline {
       font-size: 13px;
       color: var(--text-soft);
       max-width: 520px;
     }
 
-    .status-badge {
+    .pill-row {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .pill {
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(9, 16, 38, 0.85);
+      color: var(--text-soft);
+    }
+
+    .pill--accent {
+      border-color: rgba(54, 194, 255, 0.7);
+      background: rgba(12, 64, 115, 0.9);
+      color: var(--accent-strong);
+    }
+
+    .hero-meta {
+      margin-top: 16px;
+      font-size: 12px;
+      color: var(--text-faint);
+    }
+
+    .hero-meta strong {
+      color: var(--accent-strong);
+      font-weight: 600;
+    }
+
+    .hero-side {
+      border-radius: 18px;
+      background: linear-gradient(
+        145deg,
+        rgba(10, 23, 55, 0.96),
+        rgba(4, 9, 22, 0.98)
+      );
+      border: 1px solid rgba(90, 150, 255, 0.4);
+      padding: 14px 14px 13px;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .hero-side-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .hero-status-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 11px;
+      margin-bottom: 10px;
+    }
+
+    .status-chip {
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(4, 10, 24, 0.95);
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 4px 10px;
-      border-radius: var(--radius-pill);
-      background: rgba(110, 37, 50, 0.9);
-      color: #ffd9df;
-      font-size: 11px;
-      margin-top: 8px;
-      box-shadow: 0 0 0 1px rgba(255, 125, 149, 0.5);
     }
 
     .status-dot {
       width: 7px;
       height: 7px;
-      border-radius: 999px;
-      background: #ff8ea0;
-      box-shadow: 0 0 10px rgba(255, 142, 160, 0.9);
+      border-radius: 50%;
+      background: var(--danger);
+      box-shadow: 0 0 0 4px rgba(255, 107, 129, 0.2);
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 14px;
-    }
-
-    .hero-stat {
-      border-radius: 16px;
-      border: 1px solid rgba(93, 137, 194, 0.5);
-      background: radial-gradient(circle at top,
-          rgba(84, 193, 181, 0.14),
-          rgba(7, 12, 24, 0.96));
-      padding: 10px 12px;
+    .hero-side p {
       font-size: 12px;
-    }
-
-    .hero-stat-label {
       color: var(--text-soft);
-      margin-bottom: 4px;
+      line-height: 1.55;
+      margin: 0 0 8px;
     }
 
-    .hero-stat-value {
-      font-size: 18px;
-      font-weight: 600;
-    }
-
-    .hero-stat-note {
+    .hero-side small {
       font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 2px;
+      color: var(--text-faint);
     }
 
-    /* 右侧：导航 + 搜索 */
-
-    .side-section-title {
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .side-nav-list {
-      list-style: none;
-          /* 顶部视觉封面（Hero Cover） */
-
-    .hero-cover {
-      margin-top: 6px;
-      margin-bottom: 14px;
-    }
-
-    .hero-cover-inner {
-      position: relative;
-      overflow: hidden;
-      border-radius: 26px;
-      padding: 18px 20px 18px;
-      background:
-        radial-gradient(circle at 10% 0%, rgba(116, 215, 199, 0.16), transparent 55%),
-        radial-gradient(circle at 80% 0%, rgba(103, 153, 255, 0.22), transparent 60%),
-        radial-gradient(circle at 20% 120%, rgba(12, 199, 150, 0.35), transparent 60%),
-        linear-gradient(145deg, #05070b, #05070b 30%, #0b1727 70%, #05070b 100%);
-      border: 1px solid rgba(114, 166, 235, 0.5);
-      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.75);
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
-      gap: 16px;
-      align-items: center;
-    }
-
-    @media (max-width: 820px) {
-      .hero-cover-inner {
-        grid-template-columns: minmax(0, 1fr);
-        padding: 16px 14px 18px;
-      }
-    }
-
-    .hero-cover-left-eyebrow {
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: #a8c2ff;
-      margin-bottom: 6px;
-    }
-
-    .hero-cover-title-cn {
-      font-size: 24px;
-      font-weight: 650;
-      letter-spacing: 0.08em;
-      margin-bottom: 4px;
-    }
-
-    .hero-cover-title-en {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text-soft);
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      margin-bottom: 8px;
-    }
-
-    .hero-cover-sub {
-      font-size: 13px;
-      color: var(--text-muted);
-      max-width: 460px;
-      line-height: 1.7;
-    }
-
-    .hero-cover-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 10px;
-    }
-
-    .hero-cover-badge {
-      font-size: 11px;
-      padding: 4px 9px;
-      border-radius: var(--radius-pill);
-      background: rgba(5, 11, 23, 0.9);
-      border: 1px solid rgba(118, 177, 255, 0.7);
-      color: #dde8ff;
-    }
-
-    .hero-cover-badge strong {
-      color: #ffffff;
-      font-weight: 600;
-    }
-
-    .hero-cover-note {
-      margin-top: 8px;
-      font-size: 11px;
-      color: var(--text-soft);
-    }
-
-    .hero-cover-note strong {
-      color: #e0e7ff;
-    }
-
-    .hero-cover-right {
-      position: relative;
-      min-height: 150px;
-    }
-
-    .hero-cover-orbit {
-      position: absolute;
-      inset: 8px 8px 8px 0;
-      border-radius: 999px;
-      border: 1px solid rgba(132, 186, 255, 0.5);
-      opacity: 0.7;
-      transform: rotate(-10deg);
-    }
-
-    .hero-cover-orbit::before,
-    .hero-cover-orbit::after {
-      content: "";
-      position: absolute;
-      inset: 18% 10%;
-      border-radius: 999px;
-      border: 1px dashed rgba(90, 203, 187, 0.6);
-    }
-
-    .hero-cover-orbit::after {
-      inset: 32% 20%;
-      border-style: solid;
-      border-color: rgba(17, 208, 161, 0.7);
-    }
-
-    .hero-cover-shell {
-      position: absolute;
-      inset: 22% 18% 18% 24%;
-      border-radius: 50% / 60%;
-      background:
-        radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.28), transparent 55%),
-        radial-gradient(circle at 80% 90%, rgba(33, 208, 169, 0.9), transparent 60%),
-        radial-gradient(circle at 0% 100%, rgba(30, 107, 226, 0.9), transparent 60%);
-      box-shadow:
-        0 0 0 1px rgba(8, 23, 38, 0.85),
-        0 18px 40px rgba(0, 0, 0, 0.85);
-    }
-
-    .hero-cover-shell::after {
-      content: "";
-      position: absolute;
-      inset: 32% 20% 24% 24%;
-      border-radius: 60% / 70%;
-      border: 1px solid rgba(1, 10, 21, 0.85);
-      box-shadow:
-        0 0 0 1px rgba(191, 236, 255, 0.15),
-        0 10px 22px rgba(0, 0, 0, 0.9);
-    }
-
-    .hero-cover-label {
-      position: absolute;
-      right: 10px;
-      top: 12px;
-      font-size: 18px;
-      font-weight: 650;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(179, 205, 255, 0.22);
-    }
-
-    .hero-cover-chip {
-      position: absolute;
-      left: 10px;
-      bottom: 10px;
-      font-size: 11px;
-      padding: 4px 9px;
-      border-radius: var(--radius-pill);
-      background: rgba(5, 12, 26, 0.9);
-      border: 1px solid rgba(97, 176, 255, 0.7);
-      color: #d6e5ff;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .hero-cover-chip span.dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #4ad1ba;
-      box-shadow: 0 0 10px rgba(74, 209, 186, 0.95);
-    }
-      padding: 0;
-      margin: 0;
-      display: grid;
-      gap: 6px;
-      font-size: 13px;
-    }
-
-    .side-nav-link {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 7px 10px;
-      border-radius: 10px;
-      background: #0a101c;
-      border: 1px solid rgba(66, 97, 150, 0.55);
-      cursor: pointer;
-    }
-
-    .side-nav-link span {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .side-nav-link small {
-      color: var(--text-soft);
-      font-size: 11px;
-    }
-
-    .side-nav-link:hover {
-      border-color: rgba(111, 214, 200, 0.85);
-      background: #0f1725;
-    }
-
-    .search-box {
-      margin-top: 14px;
-    }
-
-    .search-input-wrap {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 9px;
-      border-radius: 11px;
-      border: 1px solid rgba(84, 112, 164, 0.7);
-      background: #050914;
-    }
-
-    .search-input-wrap input {
-      border: none;
-      outline: none;
-      flex: 1;
-      background: transparent;
-      color: var(--text-main);
-      font-size: 13px;
-    }
-
-    .search-input-wrap input::placeholder {
-      color: #56617a;
-    }
-
-    .search-hint {
-      font-size: 11px;
-      color: var(--text-soft);
-      margin-top: 4px;
-    }
-
-    /* 主体 section 标题 */
+    /* 通用区块 */
 
     .section {
-      margin-top: 24px;
+      margin-bottom: 26px;
+      padding: 18px 18px 16px;
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at top, #141a3b 0, #050814 55%);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .section-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 10px;
     }
 
     .section h2 {
       font-size: 18px;
-      margin: 0 0 8px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      margin: 0;
     }
 
-    .section h2 span.badge {
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 8px;
+      border-radius: 999px;
       font-size: 11px;
-      padding: 2px 8px;
-      border-radius: var(--radius-pill);
-      background: rgba(69, 195, 184, 0.16);
-      color: var(--accent);
-      border: 1px solid rgba(69, 195, 184, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(7, 13, 32, 0.9);
+      color: var(--text-soft);
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 3px rgba(54, 194, 255, 0.25);
     }
 
     .section-lead {
       font-size: 13px;
       color: var(--text-soft);
-      margin-bottom: 6px;
+      margin: 0 0 10px;
+      line-height: 1.7;
     }
 
     .two-col {
       display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.9fr);
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.2fr);
       gap: 16px;
     }
 
-    @media (max-width: 820px) {
-      .two-col {
-        grid-template-columns: minmax(0, 1fr);
-      }
+    .card {
+      border-radius: var(--radius-md);
+      padding: 12px 12px 11px;
+      background: var(--bg-soft);
+      border: 1px solid var(--border-subtle);
     }
 
-    .list-clean {
+    .card h3 {
+      font-size: 14px;
+      margin: 0 0 6px;
+    }
+
+    .card p {
+      font-size: 13px;
+      margin: 0 0 6px;
+      color: var(--text-soft);
+      line-height: 1.65;
+    }
+
+    .key-facts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .fact-item {
+      font-size: 12px;
+      color: var(--text-soft);
+      padding: 6px 8px;
+      border-radius: var(--radius-md);
+      background: rgba(9, 15, 34, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .fact-item strong {
+      color: var(--accent-strong);
+      font-weight: 600;
+    }
+
+    ul.clean {
       list-style: none;
       padding-left: 0;
-      margin: 6px 0;
+      margin: 0;
     }
 
-    .list-clean li {
-      padding-left: 0;
+    ul.clean li {
+      font-size: 13px;
+      color: var(--text-soft);
+      line-height: 1.7;
       margin-bottom: 4px;
     }
 
-    .bullet {
-      display: inline-block;
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: rgba(114, 181, 255, 0.9);
-      margin-right: 6px;
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 5px;
     }
 
+    .chip {
+      font-size: 11px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: rgba(11, 18, 40, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-soft);
+    }
+
+    /* 时间线 */
+
     .timeline {
-      border-left: 1.5px dashed rgba(94, 135, 196, 0.8);
-      margin-left: 4px;
-      padding-left: 14px;
-      font-size: 13px;
-      color: var(--text-muted);
+      list-style: none;
+      padding-left: 0;
+      margin: 6px 0 0;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: 3px;
+      bottom: 3px;
+      width: 1px;
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.2),
+        rgba(255, 255, 255, 0.05)
+      );
     }
 
     .timeline-item {
       position: relative;
-      margin-bottom: 8px;
+      padding-left: 22px;
+      margin-bottom: 10px;
+      font-size: 13px;
+      color: var(--text-soft);
     }
 
     .timeline-item::before {
       content: "";
       position: absolute;
-      left: -14px;
+      left: 6px;
       top: 4px;
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
       background: var(--accent);
-      box-shadow: 0 0 12px rgba(75, 201, 187, 0.9);
+      box-shadow: 0 0 0 4px rgba(54, 194, 255, 0.15);
     }
 
     .timeline-year {
-      font-size: 11px;
-      text-transform: uppercase;
-      color: #c6d6ff;
-      letter-spacing: 0.09em;
+      font-size: 12px;
+      color: var(--accent-strong);
+      font-weight: 600;
+      margin-right: 6px;
     }
 
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 6px;
-    }
+    /* 文献列表 */
 
-    .tag {
-      font-size: 11px;
-      padding: 3px 8px;
-      border-radius: var(--radius-pill);
-      background: #141b2a;
-      color: var(--text-soft);
-      border: 1px solid rgba(75, 102, 151, 0.8);
-    }
-
-    /* details 折叠 */
-
-    details {
-      margin-top: 8px;
-      border-radius: 14px;
-      background: rgba(7, 10, 18, 0.95);
-      border: 1px solid rgba(87, 118, 173, 0.7);
-      padding: 8px 10px 10px;
-    }
-
-    summary {
-      cursor: pointer;
+    .ref-list {
       list-style: none;
-      outline: none;
-      font-size: 13px;
-      color: #dbe4ff;
+      padding-left: 0;
+      margin: 8px 0 0;
     }
 
-    summary::-webkit-details-marker {
-      display: none;
+    .ref-item {
+      font-size: 12px;
+      color: var(--text-soft);
+      line-height: 1.6;
+      padding: 6px 8px;
+      border-radius: var(--radius-md);
+      background: rgba(8, 14, 32, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      margin-bottom: 6px;
     }
 
-    summary::before {
-      content: "▶";
+    .ref-item span.label {
       display: inline-block;
       font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: rgba(54, 194, 255, 0.16);
+      color: var(--accent-strong);
       margin-right: 6px;
-      color: var(--accent);
-      transform-origin: center;
-      transition: transform 0.16s ease-out;
     }
 
-    details[open] summary::before {
-      transform: rotate(90deg);
+    /* 新闻列表 */
+
+    .news-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 6px 0 0;
     }
 
-    .details-body {
-      margin-top: 6px;
-      font-size: 13px;
-      line-height: 1.7;
-      color: var(--text-muted);
-      max-height: 380px;
-      overflow-y: auto;
-      padding-right: 4px;
-    }
-
-    .details-body p {
-      margin: 4px 0;
-    }
-
-    /* 图片网格占位 */
-
-    .image-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 6px;
-      margin-top: 8px;
-    }
-
-    .image-placeholder {
-      border-radius: 12px;
-      border: 1px dashed rgba(88, 119, 172, 0.8);
-      background: radial-gradient(circle at top left,
-          rgba(94, 174, 255, 0.1),
-          rgba(5, 9, 18, 0.96));
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
+    .news-item {
+      padding: 7px 8px;
+      border-radius: var(--radius-md);
+      background: rgba(10, 16, 34, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 12px;
       color: var(--text-soft);
-      text-align: center;
-      padding: 6px;
+      margin-bottom: 6px;
     }
 
-    @media (max-width: 640px) {
-      .image-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    .news-meta {
+      font-size: 11px;
+      color: var(--text-faint);
+      margin-bottom: 2px;
+    }
+
+    .news-item strong {
+      color: var(--accent-strong);
+    }
+
+    /* 作者笔记 */
+
+    .notes-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 16px;
+      margin-top: 4px;
+    }
+
+    .note-card {
+      border-radius: var(--radius-md);
+      background: rgba(10, 16, 34, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      padding: 10px 11px 10px;
+    }
+
+    .note-title {
+      font-size: 14px;
+      margin: 0 0 4px;
+    }
+
+    .note-meta {
+      font-size: 11px;
+      color: var(--text-faint);
+      margin-bottom: 6px;
+    }
+
+    .note-card p {
+      font-size: 12px;
+      color: var(--text-soft);
+      line-height: 1.7;
+      margin: 0 0 4px;
+    }
+
+    /* 图像区域：纯文字说明 */
+
+    .gallery-text-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.2fr);
+      gap: 14px;
+      margin-top: 4px;
+    }
+
+    .gallery-text-block {
+      border-radius: var(--radius-md);
+      background: rgba(8, 14, 32, 0.96);
+      border: 1px dashed rgba(255, 255, 255, 0.18);
+      padding: 10px 11px;
+      font-size: 12px;
+      color: var(--text-soft);
+      line-height: 1.7;
+    }
+
+    .gallery-text-block strong {
+      color: var(--accent-strong);
+    }
+
+    /* 站内搜索：高亮和隐藏 */
+
+    .searchable-block {
+      transition: opacity var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .searchable-block.search-hidden {
+      opacity: 0.18;
+      transform: scale(0.99);
+      pointer-events: none;
+    }
+
+    .search-result-hint {
+      display: none;
+      font-size: 11px;
+      color: var(--text-faint);
+      margin-top: 4px;
+    }
+
+    .search-result-hint.active {
+      display: block;
+    }
+
+    /* 页脚 */
+
+    .site-footer {
+      margin-top: 26px;
+      font-size: 11px;
+      color: var(--text-faint);
+      text-align: center;
+    }
+
+    .site-footer a {
+      color: var(--accent);
+    }
+
+    /* 响应式 */
+
+    @media (max-width: 840px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .two-col,
+      .notes-grid,
+      .gallery-text-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .site-header-inner {
+        flex-wrap: wrap;
+      }
+
+      .header-search {
+        min-width: 100%;
+      }
+
+      .hero {
+        padding: 16px 14px 18px;
+      }
+
+      .section {
+        padding: 16px 14px 15px;
       }
     }
 
-    .footnote {
-      font-size: 11px;
-      color: var(--text-soft);
-      margin-top: 6px;
-    }
+    @media (max-width: 520px) {
+      .site-title {
+        font-size: 15px;
+      }
 
-    .footnote strong {
-      color: #d7e2ff;
-    }
-
-    .footer {
-      margin-top: 26px;
-      font-size: 11px;
-      color: var(--text-soft);
-      border-top: 1px solid rgba(46, 60, 95, 0.8);
-      padding-top: 10px;
+      .hero-main h1 {
+        font-size: 22px;
+      }
     }
   </style>
 </head>
+
 <body>
-  <div class="page">
-    <!-- 顶部导航 -->
-    <header class="top-nav">
-      <div class="brand">
-        <div class="brand-mark"></div>
-        <div>
-          <div class="brand-text-main">斑鳖档案</div>
-          <div class="brand-text-sub">RAFETUS • ARCHIVE</div>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <div class="brand-mark">
+        <span>鳖</span>
+      </div>
+      <div class="site-title-block">
+        <div class="site-title">
+          斑鳖资料档案
+          <span class="en">Rafetus swinhoei Archive</span>
+        </div>
+        <div class="site-subtitle">一个围绕斑鳖的长线整理项目：从历史标本、红河与越南动态，到现实保育困境。</div>
+      </div>
+      <div class="header-search">
+        <div class="search-input-wrap">
+          <div class="search-icon"></div>
+          <input
+            id="siteSearch"
+            class="search-input"
+            type="search"
+            placeholder="站内搜索：如“红河”“越南”“时间线”…"
+          />
+        </div>
+        <div class="search-hint">按 Enter 固定搜索</div>
+      </div>
+    </div>
+    <nav class="nav-pill-row">
+      <button class="nav-pill" onclick="scrollToSection('overview')">物种概览</button>
+      <button class="nav-pill" onclick="scrollToSection('status')">现状与分布</button>
+      <button class="nav-pill" onclick="scrollToSection('timeline')">历史时间线</button>
+      <button class="nav-pill" onclick="scrollToSection('vietnam')">越南与红河</button>
+      <button class="nav-pill" onclick="scrollToSection('gallery')">标本与影像说明</button>
+      <button class="nav-pill" onclick="scrollToSection('literature')">文献与资料库</button>
+      <button class="nav-pill" onclick="scrollToSection('news')">最近新闻</button>
+      <button class="nav-pill" onclick="scrollToSection('notes')">作者笔记</button>
+    </nav>
+  </header>
+
+  <main class="page">
+    <!-- 顶部介绍 -->
+    <section class="hero searchable-block" data-search-text="斑鳖 Rafetus swinhoei 物种介绍 概览">
+      <div class="hero-main">
+        <h1>斑鳖：世界上最濒危的淡水龟鳖之一</h1>
+        <p class="tagline">
+          斑鳖（<em>Rafetus swinhoei</em>）——也被称为扬子鳄巨鳖、红河巨鳖、斯氏鳖——曾经生活在中国长江与太湖流域，以及中越红河系统。
+          在不到一个世纪的时间里，它从“大型经济动物”滑落到“仅剩寥寥数只”的极危边缘。
+        </p>
+
+        <div class="pill-row">
+          <span class="pill pill--accent">IUCN：极危（CR）</span>
+          <span class="pill">CITES 附录 II</span>
+          <span class="pill">最大淡水鳖之一（背甲可达 1.5 m）</span>
+          <span class="pill">历史分布：长江 &amp; 太湖 &amp; 红河</span>
+        </div>
+
+        <div class="hero-meta">
+          <div><strong>本页定位：</strong>不是新闻网站，而是一个从中文视角出发的斑鳖档案与资料索引。</div>
+          <div>最后更新：2025 年（将随后续调查、文献与越南动态继续补充）。</div>
         </div>
       </div>
-      <nav class="nav-links">
-        <a class="nav-pill" href="#overview">斑鳖百科</a>
-        <a class="nav-pill" href="#timeline">历史时间线</a>
-        <a class="nav-pill" href="#gallery">标本与影像</a>
-        <a class="nav-pill" href="#red-river">红河与越南</a>
-        <a class="nav-pill" href="#conservation">保护行动</a>
-        <a class="nav-pill" href="#notes">研究笔记</a>
-        <a class="nav-pill nav-pill--primary" href="#status">存活个体 · 现状</a>
-      </nav>
-    </header>
 
-    <main class="layout">
-      <!-- 左侧主内容 -->
-      <div>
-        <!-- Hero 基本信息 -->
-        <section id="overview" class="card">
-          <div class="card-header">
-            <div>
-              <div class="card-title">
-                斑鳖 <span style="opacity:.8;">Rafetus swinhoei</span>
-              </div>
-              <div class="hero-title">世界上最濒危的淡水龟鳖之一</div>
-            </div>
-            <span class="card-tag">物种档案</span>
-          </div>
-          <p class="hero-subtitle">
-            斑鳖，又称
-            <strong>扬子鳄巨鳖 / 红河巨鳖 / Swinhoe's softshell turtle</strong>，
-            是目前已知体型最大的淡水鳖类之一，历史分布于中国东部及越南北部的大型河流与湖泊，如
-            <strong>长江流域、太湖、红河流域</strong> 等。由于过度捕捞、栖息地丧失与水体污染，这个物种已被
-            <strong>IUCN 列为极危（CR）</strong>，实际已接近功能性灭绝。
-          </p>
-          <div class="status-badge" id="status">
+      <aside class="hero-side">
+        <div class="hero-side-title">存活个体概况（截至 2025 年公开信息）</div>
+        <div class="hero-status-row">
+          <div class="status-chip">
             <span class="status-dot"></span>
-            <span>当前：已确认存活个体极少 · 极危 / 功能性灭绝</span>
+            现存已确认个体 ≤ 2–3 只
           </div>
-
-          <div class="hero-grid">
-            <div class="hero-stat">
-              <div class="hero-stat-label">已确认个体（近年主流观点）</div>
-              <div class="hero-stat-value">约 2–3 只</div>
-              <div class="hero-stat-note">
-                一只圈养于中国苏州，一只确认于越南湖泊，另有少量
-                eDNA 与目击线索仍在持续调查。
-              </div>
-            </div>
-            <div class="hero-stat">
-              <div class="hero-stat-label">体型与寿命</div>
-              <div class="hero-stat-value">背甲可超 1 m</div>
-              <div class="hero-stat-note">
-                体重可达 100 kg 以上，寿命估计可超过百年，是典型的“长寿顶级淡水掠食者”。
-              </div>
-            </div>
-            <div class="hero-stat">
-              <div class="hero-stat-label">历史分布</div>
-              <div class="hero-stat-value">长江 + 红河</div>
-              <div class="hero-stat-note">
-                主要记录来自太湖–长江水系以及中越红河流域；珠江、湄公河并无可靠记录。
-              </div>
-            </div>
-            <div class="hero-stat">
-              <div class="hero-stat-label">主要威胁</div>
-              <div class="hero-stat-value">过度捕捞 & 栖息地破坏</div>
-              <div class="hero-stat-note">
-                电鱼、网箱养鱼、采沙、水坝调度 + 污染，共同摧毁了适合繁殖的沙滩与浅滩环境。
-              </div>
-            </div>
+          <div class="status-chip">
+            中国苏州：1 只年老雄性（圈养）
           </div>
-
-          <div class="pill-row" style="margin-top:12px;">
-            <span class="info-pill"><strong>IUCN 等级：</strong>Critically Endangered（极危）</span>
-            <span class="info-pill"><strong>类群：</strong>爬行纲 · 龟鳖目 · 鳖科 · 斑鳖属</span>
-            <span class="info-pill"><strong>常见别名：</strong>斯氏鳖 / 黄斑巨鳖 / 上海鳖 / 红河巨鳖</span>
+          <div class="status-chip">
+            越南宣 khanh / 同墨湖：1–2 只野外个体
           </div>
-        </section>
+        </div>
+        <p>
+          2019 年，中国最后一只已知雌性在人工授精后死亡；2020 年，同墨湖发现雌性个体，一度带来希望，但在
+          2023 年又被发现死亡。越南目前仍在通过 eDNA 与访谈等方式确认是否仍有未知个体存在。
+        </p>
+        <small>注：此处为公开资料综合解读，并非官方统计。物种极度稀少，任何新增可靠线索都具有极高价值。</small>
+      </aside>
+    </section>
 
-        <!-- 物种特征与基础百科 -->
-        <section class="section">
-          <h2>
-            斑鳖的外形与生态
-            <span class="badge">基础百科</span>
-          </h2>
-          <p class="section-lead">
-            这一部分把“长得像什么、与其他鳖有何不同、大致怎么生活”讲清楚，方便公众与研究者快速对齐认知。
-          </p>
-          <div class="card">
-            <div class="two-col">
-              <div class="card-body">
-                <h3 style="font-size:15px;margin:0 0 4px;">1. 典型外形特征</h3>
-                <ul class="list-clean">
-                  <li>
-                    <span class="bullet"></span>
-                    <strong>体型巨大：</strong>背甲长度可达 1 米以上，个体体重可超过 100 公斤，是目前已知最大型淡水鳖之一。
-                  </li>
-                  <li>
-                    <span class="bullet"></span>
-                    <strong>背甲与腹甲：</strong>背甲橄榄绿色、略呈椭圆形，质地柔软；腹面黄白色，具有
-                    <strong>两块显著的胼胝体</strong>，是与其他亚洲鳖类区分的重要特征之一。
-                  </li>
-                  <li>
-                    <span class="bullet"></span>
-                    <strong>头部与斑纹：</strong>鼻吻部突出、短而宽扁，头大而宽，幼体和亚成体头部具有清晰的黄色斑纹，
-                    成体斑纹会随年龄变淡，但仍保留一定花纹痕迹。
-                  </li>
-                  <li>
-                    <span class="bullet"></span>
-                    <strong>“猪鼻子”与“潜望镜”：</strong>吻端呈管状鼻孔，可像吸管一样伸出水面呼吸；眼睛偏上方，利于在水下潜伏时观察水面动静。
-                  </li>
-                  <li>
-                    <span class="bullet"></span>
-                    <strong>性二型：</strong>与多数鳖类类似，雄性整体体型略小但尾巴细长突出，雌性体型更大、体态更粗壮，用于承担产卵与长期繁殖负担。
-                  </li>
-                </ul>
+    <!-- 物种概览 -->
+    <section id="overview" class="section searchable-block" data-search-text="基本信息 分类 学名 形态特征 生态习性">
+      <div class="section-header">
+        <h2>一、物种概览与基础信息</h2>
+        <span class="badge"><span class="badge-dot"></span>物种档案</span>
+      </div>
+      <p class="section-lead">
+        本节汇总斑鳖的基本信息，方便公众和研究者快速了解这个物种“到底是什么”“曾经在哪里”“大概长什么样”。
+        详细分类与测量可在文献条目中查到原始数据。
+      </p>
 
-                <h3 style="font-size:15px;margin:10px 0 4px;">2. 生活方式（推测）</h3>
-                <ul class="list-clean">
-                  <li>
-                    <span class="bullet"></span>
-                    <strong>栖息地：</strong>偏好
-                    <strong>宽阔河道、深水缓流区、大型水库与湖泊</strong>，底质多为泥沙，便于掩埋躲藏。
-                  </li>
-                  <li>
-                    <span class="bullet"></span>
-                    <strong>摄食习性：</strong>杂食性偏肉食，主要捕食鱼类、蟹类、螺、蛙类等，也会取食部分水生植物和农田中掉落的农作物残体。
-                  </li>
-                  <li>
-                    <span class="bullet"></span>
-                    <strong>活动节律：</strong>多在水下潜伏，突然伏击经过的鱼类和其他猎物；夜间活动可能更为频繁。
-                  </li>
-                  <li>
-                    <span class="bullet"></span>
-                    <strong>繁殖习性：</strong>一般在
-                    <strong>沙滩或沙质河岸</strong>挖巢产卵，每窝可产数十枚卵，孵化需要 2 个月左右的稳定温度与湿度，
-                    卵既不能被长期浸水，也不能严重干燥。
-                  </li>
-                </ul>
-              </div>
-
-              <div class="card-body">
-                <h3 style="font-size:15px;margin:0 0 4px;">3. 与其他“鳖”怎么区分？</h3>
-                <ul class="list-clean">
-                  <li>
-                    <span class="bullet"></span>
-                    <strong>与中华鳖 / 亚洲鳖：</strong>斑鳖体型远大于普通食用鳖，头部黄斑明显，背甲形状与质感也不同；
-                    腹甲两块胼胝体十分典型。
-                  </li>
-                  <li>
-                    <span class="bullet"></span>
-                    <strong>与鼋：</strong>鼋属于另一类大型鳖，背甲轮廓与头型都不同；斑鳖头部斑纹更明显，体表纹理与骨骼形态也有差异。
-                  </li>
-                  <li>
-                    <span class="bullet"></span>
-                    <strong>与“红河神龟 / 还剑湖神龟”混淆：</strong>越南曾用
-                    <em>Rafetus leloii / R. vietnamensis</em> 等名称描述“新种”，多数研究者认为这些名称应归入斑鳖
-                    <em>Rafetus swinhoei</em> 的同物异名，具体细节仍有争议。
-                  </li>
-                </ul>
-
-                <h3 style="font-size:15px;margin:10px 0 4px;">4. 命名与分类简史</h3>
-                <ul class="list-clean">
-                  <li>
-                    <span class="bullet"></span>
-                    <strong>1873 年：</strong>英国动物学家 Gray 根据
-                    <strong>上海附近的幼体标本</strong> 发表该物种（最早归入其他属）。:contentReference[oaicite:1]{index=1}
-                  </li>
-                  <li>
-                    <span class="bullet"></span>
-                    之后很长一段时间内，长江与红河的巨大鳖类标本被混入其他名称之下（包括
-                    <em>Trionyx</em>、<em>Pelodiscus</em> 等属）。
-                  </li>
-                  <li>
-                    <span class="bullet"></span>
-                    <strong>1980s：</strong>通过骨骼与形态研究，Meylan 等系统厘清了斑鳖的分类地位，确认这是一个独立的物种
-                    <em>Rafetus swinhoei</em>，鳖科中仅与中东地区的
-                    <em>R. euphraticus</em> 属于同一属。:contentReference[oaicite:2]{index=2}
-                  </li>
-                </ul>
-
-                <div class="tag-row">
-                  <span class="tag">巨大软壳鳖</span>
-                  <span class="tag">红河巨鳖</span>
-                  <span class="tag">功能性灭绝</span>
-                  <span class="tag">长寿顶级掠食者</span>
-                </div>
-              </div>
-            </div>
+      <div class="two-col">
+        <div class="card">
+          <h3>1.1 分类与命名</h3>
+          <ul class="clean">
+            <li><strong>中文名：</strong>斑鳖、斯氏鳖、黄斑巨鳖、扬子鳄巨鳖（媒体常用）</li>
+            <li><strong>学名：</strong><em>Rafetus swinhoei</em> (Gray, 1873)</li>
+            <li><strong>科属：</strong>龟鳖目（Testudines）— 鳖科（Trionychidae）— 斑鳖属（<em>Rafetus</em>）</li>
+            <li><strong>近缘种：</strong><em>Rafetus euphraticus</em>（幼发拉底鳖），分布于中东河流系统。</li>
+          </ul>
+          <div class="chip-row">
+            <span class="chip">Gray 1873 描述幼体标本</span>
+            <span class="chip">Meylan 1987 软壳龟系统发育工作</span>
           </div>
-        </section>
-
-        <!-- 历史时间线 -->
-        <section id="timeline" class="section">
-          <h2>
-            斑鳖重要历史时间线
-            <span class="badge">时间轴</span>
-          </h2>
-          <p class="section-lead">
-            下面这条时间线，把“从被命名、被忽视，到进入公众视野、再到濒临功能性灭绝”的关键节点串起来。
-          </p>
-          <div class="card">
-            <div class="timeline">
-              <div class="timeline-item">
-                <div class="timeline-year">1873</div>
-                <div><strong>物种命名：</strong>根据来自上海附近的一只幼体标本，斑鳖被正式发表。</div>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-year">1950s–1970s</div>
-                <div>
-                  <strong>云南红河流域大量捕捞：</strong>红河中下游斑鳖资源仍较丰富，但遭遇有组织的大规模捕捞，
-                  大量个体被捕获后送至个旧、昆明、北京、上海等地动物园，部分制成标本进入博物馆收藏。
-                </div>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-year">1987 前后</div>
-                <div>
-                  <strong>分类学重新确认：</strong>通过系统的骨骼与外形对比，斑鳖被明确归入
-                  <em>Rafetus swinhoei</em>，其“巨鳖”身份被重新认识。
-                </div>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-year">2000s</div>
-                <div>
-                  <strong>红河调查与苏州配对繁殖：</strong>中国与越南的科研团队开始系统调查红河流域残存个体；
-                  同期，苏州动物园引入雌性个体，与老年雄性开展人工授精尝试。
-                </div>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-year">2016</div>
-                <div>
-                  <strong>还剑湖个体死亡：</strong>越南河内还剑湖著名的“巨龟”死亡，全球已知个体数再次减少。:contentReference[oaicite:3]{index=3}
-                </div>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-year">2019</div>
-                <div>
-                  <strong>苏州最后已知雌性死亡：</strong>在一次人工授精术后，苏州动物园的雌性斑鳖死亡，当时全球仅剩 3
-                  只已确认活体。:contentReference[oaicite:4]{index=4}
-                </div>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-year">2018–2020</div>
-                <div>
-                  <strong>越南新个体与 eDNA 线索：</strong>通过水体 eDNA 与实地调查，越南
-                  <strong>东莫湖 / 宣慶湖</strong> 等地确认存在新的野外个体，为物种带来短暂希望。:contentReference[oaicite:5]{index=5}
-                </div>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-year">2023</div>
-                <div>
-                  <strong>东莫湖雌性死亡：</strong>2020 年确认的一只雌性个体在越南东莫湖死亡，
-                  主流媒体与保护机构普遍认为该物种已处于“功能性灭绝”状态。:contentReference[oaicite:6]{index=6}
-                </div>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-year">2024–2025</div>
-                <div>
-                  <strong>新的 eDNA 技术与关键个体监测：</strong>部分团队开发便携式 eDNA 检测方法，尝试在更大范围内搜索潜在残存个体；
-                  同时重点监测苏州圈养个体与越南湖泊中的极少数个体。:contentReference[oaicite:7]{index=7}
-                </div>
-              </div>
-            </div>
-            <p class="footnote">
-              <strong>说明：</strong>上面时间线融合了公开文献、新闻报道与科普文章，未来如有新发现（例如确认新的个体或成功繁殖），
-              可以直接在本段 HTML 中继续追加新的 <code>.timeline-item</code>。
-                  <!-- 顶部视觉封面（Hero Cover） -->
-    <section class="hero-cover">
-      <div class="hero-cover-inner">
-        <div>
-          <div class="hero-cover-left-eyebrow">RAFETUS • SPECIES ARCHIVE</div>
-          <div class="hero-cover-title-cn">中华斑鳖档案库</div>
-          <div class="hero-cover-title-en">RAFETUS SWINHOEI ARCHIVE</div>
-          <p class="hero-cover-sub">
-            世界上最濒危的淡水龟鳖之一。这里集中整理斑鳖的
-            <strong>自然历史、标本记录、红河与长江的调查线索、研究进展与保护行动</strong>，
-            希望为未来的调查与决策留下一份尽量完整、持续更新的档案。
-          </p>
-          <div class="hero-cover-badges">
-            <span class="hero-cover-badge"><strong>极危 · 功能性灭绝边缘</strong></span>
-            <span class="hero-cover-badge">长江 · 太湖 · 红河流域</span>
-            <span class="hero-cover-badge">自然历史 · 标本 · 田野记录 · eDNA</span>
-          </div>
-          <p class="hero-cover-note">
-            <strong>说明：</strong>本网站为非营利个人档案项目，内容基于公开文献与合作方资料，
-            后续会持续补充红河、越南及博物馆标本等信息。
-          </p>
         </div>
 
-        <div class="hero-cover-right" aria-hidden="true">
-          <div class="hero-cover-orbit"></div>
-          <div class="hero-cover-shell"></div>
-          <div class="hero-cover-label">RAFETUS</div>
-          <div class="hero-cover-chip">
-            <span class="dot"></span>
-            <span>全球已确认存活个体：极少 · 持续调查中</span>
+        <div class="card">
+          <h3>1.2 形态与体型要点</h3>
+          <p>
+            斑鳖是体型极大的软壳鳖：背甲椭圆形，成年个体背甲长度可超过 1 m，最大记录逼近 1.5 m，体重可达
+            100 kg 以上。头大而宽，吻部粗短，鼻孔位于吻端，幼体与亚成体阶段头部及颈部具有显著黄色斑纹。
+          </p>
+          <div class="key-facts">
+            <div class="fact-item">
+              <strong>体型等级：</strong><br />
+              全球已知最大淡水鳖之一，与巨型鳄龟和其他巨鳖相当。
+            </div>
+            <div class="fact-item">
+              <strong>壳色与花纹：</strong><br />
+              背面橄榄绿色或灰绿色，幼体有明显黄斑与圆形花纹，老年个体斑纹逐渐淡化。
+            </div>
+            <div class="fact-item">
+              <strong>生活环境：</strong><br />
+              大型河流与湖泊，偏好深水区、缓流河段及有沙滩的岸线。
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-            </p>
-          </div>
-        </section>
-
-        <!-- 你提供的那篇科普文章：整理 + 原文 -->
-        <section id="red-river" class="section">
-          <h2>
-            红河流域与斑鳖现状（整理自饶定齐等）
-            <span class="badge">红河 · 云南 · 越南</span>
-          </h2>
-          <p class="section-lead">
-            下面这一块主要基于你提供的《斑鳖的现状及保护问题》一文，对红河流域斑鳖的历史与保护难点做了结构化整理，
-            同时保留了 <strong>原文全文</strong> 供研究使用。
-          </p>
-
-          <div class="card">
-            <div class="two-col">
-              <div class="card-body">
-                <h3 style="font-size:15px;margin:0 0 4px;">1. 红河斑鳖的历史与分布</h3>
-                <ul class="list-clean">
-                  <li>
-                    <span class="bullet"></span>
-                    斑鳖的模式产地在上海附近，但红河流域（中国云南元江至河口 ~350 km 河段以及越南境内红河）同样是
-                    <strong>极其重要的源生地与历史分布核心区</strong>。
-                  </li>
-                  <li>
-                    <span class="bullet"></span>
-                    红河斑鳖与长江–太湖系统之间存在明显分布间隔，两地个体在头部斑纹与颜色等特征上较稳定地
-                    <strong>表现出一定差异</strong>，是否属于同一演化单元仍有讨论空间。
-                  </li>
-                  <li>
-                    <span class="bullet"></span>
-                    20 世纪 50–70 年代，红河流域斑鳖资源仍相当丰富，但在强度捕捞下大量个体被运往各地动物园，
-                    这既造成野外种群崩溃，也在一定程度上增加了“斑鳖到底分布在什么地方”的混乱。
-                  </li>
-                </ul>
-
-                <h3 style="font-size:15px;margin:10px 0 4px;">2. 为什么看不到幼体与亚成体了？</h3>
-                <p>
-                  文章特别强调：<strong>自 2006 年起，红河流域几乎没有发现过幼体和亚成体</strong>，
-                  即便偶有大型个体被看到，也多为年老成体。这很可能意味着：
-                </p>
-                <ul class="list-clean">
-                  <li>
-                    <span class="bullet"></span>
-                    可繁殖个体数量极少，配对机会不足；
-                  </li>
-                  <li>
-                    <span class="bullet"></span>
-                    适合产卵的沙滩被水电站、水位波动、采沙与人类活动严重破坏；
-                  </li>
-                  <li>
-                    <span class="bullet"></span>
-                    孵化期需要 2 个月左右稳定的温度与湿度，一旦巢坑经历反复淹没或暴晒，卵极易全部失败。
-                  </li>
-                </ul>
-
-                <h3 style="font-size:15px;margin:10px 0 4px;">3. 文章中提到的关键结论（当时）</h3>
-                <ul class="list-clean">
-                  <li>
-                    <span class="bullet"></span>
-                    当时（约 2017 年左右）的判断是：
-                    <strong>全球仅确认 3 只斑鳖</strong> —— 中国苏州一对 + 越南一只，且繁殖尝试屡次失败，雄性体况下滑，形势极端严峻。
-                  </li>
-                  <li>
-                    <span class="bullet"></span>
-                    红河流域在 2014 年仍有疑似斑鳖上岸目击记录，说明当地仍存在存活个体的可能，
-                    但 2016 年后未再有可靠的大型鳖活动记录，引发外界对其是否已经彻底灭绝的担忧。
-                  </li>
-                  <li>
-                    <span class="bullet"></span>
-                    文章强烈呼吁：对
-                    <strong>马堵山电站库区及其残存沙滩</strong> 实行严格管护、禁止采沙、控制电鱼和网箱养殖，以免最后的个体被“误杀”。
-                  </li>
-                </ul>
-              </div>
-
-              <div class="card-body">
-                <h3 style="font-size:15px;margin:0 0 4px;">4. 建议的关键保护行动（原文要点）</h3>
-                <ul class="list-clean">
-                  <li>
-                    <span class="bullet"></span>
-                    <strong>尽快厘清遗传关系：</strong>分析苏州动物园个体与红河（包括越南）个体的遗传差异，
-                    找出人工繁殖失败的具体原因。
-                  </li>
-                  <li>
-                    <span class="bullet"></span>
-                    <strong>系统调查红河流域：</strong>扩大调查范围，特别是
-                    <strong>干扰相对较少的主河段与支流交汇沙滩</strong>，评估是否仍有存活个体。
-                  </li>
-                  <li>
-                    <span class="bullet"></span>
-                    <strong>考虑“放归配对”的激进方案：</strong>在确认红河仍有个体、而圈养繁殖始终失败的前提下，
-                    可讨论把苏州个体携带无线电发射器放入红河库区，让其自行寻找同类和配偶，并实施全程监控与保护。
-                  </li>
-                  <li>
-                    <span class="bullet"></span>
-                    <strong>寻找“隐藏个体”：</strong>通过媒体、网络等途径，寻找国内外可能仍饲养或放生过斑鳖的水库和动物园个体，一旦发现及时开展救护与繁殖。
-                  </li>
-                  <li>
-                    <span class="bullet"></span>
-                    <strong>整合区域保护：</strong>红河流域不仅有斑鳖，还有鼋、圆鼻巨蜥、蟒蛇、山瑞鳖、大壁虎、虎纹蛙等一二级保护物种，
-                    对斑鳖的保护应与整个流域生态保护相结合，而不是单一物种思维。
-                  </li>
-                </ul>
-
-                <h3 style="font-size:15px;margin:10px 0 4px;">5. 现实 vs. 文章年代的差异</h3>
-                <p>
-                  这篇文章写于数年前，当时“3 只个体”的判断已经被后续调查更新：越南又发现新的个体与
-                  eDNA 证据，但随后部分个体死亡，使得目前主流观点认为全球已确认存活的个体仅有 2–3
-                  只，且缺乏可确认的健康雌性。:contentReference[oaicite:8]{index=8}
-                </p>
-              </div>
-            </div>
-
-            <!-- 原文折叠区 -->
-            <details>
-              <summary>展开查看：你提供的《斑鳖的现状及保护问题》原文全文</summary>
-              <div class="details-body">
-                <!-- 这里保留你的原始文字，方便研究用 -->
-                <p><strong>斑鳖的现状及保护问题</strong></p>
-                <p>2017-08-04 | 作者：饶定齐 | 来源：兽类生态与进化组</p>
-                <p>
-                  斑鳖 Rafetus swinhoei Gray 是 1873 年根据来自上海附近一个年幼的标本而定名的物种，
-                  也称斯氏鳖或黄斑巨鳖，是世界上最大的淡水鳖，背甲可长达 1500 毫米，体重可达 115 公斤。
-                </p>
-                <p>
-                  斑鳖曾因分类地位不明而长期被忽视，直到 1987 年才在分类学界得到确认（Meylan etc.，1988）。
-                  为此，斑鳖的保护和管理工作受到影响，国内甚至未及将其列入 1989 年颁布的《国家重点保护野生动物名录》。
-                </p>
-                <p>
-                  其实斑鳖具有明显的外形特征:体型大、背甲长度可以达 1.5 米；背甲橄榄绿色、椭圆形；
-                  腹甲黄白色、具 2 块胼胝体；鼻吻部突出、鼻短而宽扁；头部具大的黄色斑纹等。
-                  以此可与此地区的其他鳖类物种区分。
-                </p>
-                <p>
-                  斑鳖曾广泛分布于长江流域（钱塘江、太湖）和红河流域（王剑和史海涛，2011），然而，长江流域和红河流域的两个斑鳖地理群体之间存在巨大的分布间隔，
-                  二者是否为同一种宜作进一步研究。有关红河流域斑鳖的情况，闻丞和王剑（2012）
-                  曾以“云南斑鳖的过去、现在和未来”为题进行过报道。作者自 2011 年以来的调查则进一步增进了对云南红河流域斑鳖分布和生存现状的了解。
-                </p>
-                <p>
-                  红河流域（中下游）是斑鳖的重要源生地（栖息地），范围包括云南境内自元江县至河口县约 350 公里的河段和越南境内的河段
-                  但邻近的珠江流域和湄公河流域都没有斑鳖分布的记录，提示红河流域斑鳖的分布可能是比较局限的。
-                  且红河流域斑鳖具有比较稳定且基本一致的头部斑纹及颜色，也提示红河流域斑鳖与长江流域斑鳖之间可能存在一定差别。
-                </p>
-                <p>
-                  云南境内的斑鳖在 19 世纪 50 年代和 60 年代较丰富，70 年代也尚有一定数量，甚至到 2000 年仍每年有稳定的捕获记录。
-                  然而，上世纪 50 年代到 70 年代，红河流域的斑鳖也遭受了有组织的大量捕捞，
-                  部分活体随后流入个旧、昆明、北京、上海等国内一些动物园饲养（有的是与个旧动物园交换），
-                  而上海自然博物馆、重庆自然博物馆、中国科学院成都生物研究所等也分别收集了这个时期采自云南红河的斑鳖标本。
-                  斑鳖在动物园之间的流动在一定程度上增加了其分布范围和分类界定中的不确定因素。
-                </p>
-                <p>
-                  另外值得注意的是，红河流域的斑鳖，不论中国云南还是越南，从 2006 年开始关注至今，都未发现过其幼体和亚成体。
-                  据此推测斑鳖在红河流域最迟在上世纪末或本世纪初就已经未能正常繁殖。
-                  其原因可能是过度捕捞后所剩个体无几、繁殖机会减少；
-                  作为重要栖息环境的沙滩越来越少、越来越小，而人为活动和干扰越来越多、越来越频繁，
-                  斑鳖缺乏合适的繁殖场所，或仅剩的所能繁殖的场所被频繁干扰；
-                  主河道和支流河道水流量不稳定，不仅干季和雨季的水量变化幅度大——干季水枯而雨季水暴涨，
-                  而且晴天和雨天的水流量变化幅度也增大，水面波动幅度和频次增加，影响其居留和繁殖，
-                  尤其产卵和孵化，不仅难以找到产卵场所，而且严重影响卵的孵化，因为产在河岸沙土之中的卵需要比较长的时间
-                  （一般需要两个多月）才能孵化，期间必需保持合适的温度和湿度，尤其卵不能被水淹没或长时间干燥。
-                  所以，造成目前即便有残存的个体，也是体型比较大的年老个体。
-                </p>
-                <p><strong>目前，关于斑鳖的现实情况是：</strong></p>
-                <p>
-                  1）全世界已知存活的斑鳖个体仅三只，中国一对，越南一只，
-                  全世界均再无其他野外或饲养的斑鳖记录和报道，而随着越南一只斑鳖的死亡和苏州动物园人工授精繁殖的连续不成功，
-                  加上苏州雄性斑鳖体质状况日益下降，斑鳖的生存已处于极其危机的关头，拯救斑鳖的行动越来越严峻和紧迫，所剩的时间和机会已经很少。
-                </p>
-                <p>
-                  2）云南红河流域直到 2015 年仍有发现大型鳖类出现的信息，
-                  发现地点多在马堵山电站库区冷镦至黄草岭之间河段，但不能完全确认其为斑鳖，
-                  因为，在红河流域尚有亚洲鳖和鼋等大型鳖类物种。
-                  但 2014 年在玛玉田附近河段曾经爬到河岸上的一只大型鳖类与斑鳖非常相似（据当地目击者描述），
-                  加上当地居民提供的其他信息，红河流域确实尚有存活斑鳖的可能。
-                  然而，自 2016 年以来未能再获得大型鳖类活动的信息，又陡增了对红河斑鳖是否尚存的担忧。
-                </p>
-                <p>
-                  分析 2016 年以来马堵山电站库区未再发现大型鳖类出现的原因，可能是由于近年来库区人为活动数量和程度增加，
-                  如网箱养鱼、钓鱼、捕鱼甚至电鱼活动，仅有的少数几个在支流入口处的沙滩也因捞沙或电站、道路建设等而遭到破坏和干扰，
-                  加上马堵山电站库区因蓄水或放水造成的水位波动和回水线变化，使为数极少的大型鳖类个体离开了以往所在的处所，
-                  或更加隐蔽，以致在以往能够见到的区域不再出现。但实际情况如何，需进一步调查探究。
-                </p>
-                <p><strong>针对斑鳖的现实情况，有如下关键事宜急需尽快开展：</strong></p>
-                <p>
-                  1) 尽快分析和掌握目前苏州动物园所饲养的一对斑鳖的遗传信息及其与红河流域（包括越南）斑鳖的亲缘关系，
-                  并尽可能找出繁殖不成功（不受精或孵化不成功）的原因；
-                </p>
-                <p>
-                  2）尽快对云南境内红河流域进行广泛深入的调查，扩大调查范围，加强人为干扰较少的主河河段和重要支流的调查，
-                  以尽快发现可能尚存活的个体。同时，尽快调查核实马堵山电站库区潜在的斑鳖的现况，
-                  并对整个库区进行严密管护和监控，尤其是仅存的几个主要沙滩，以免可能尚存的斑鳖受到伤害或盗捕。
-                </p>
-                <p>
-                  在确定红河流域（马堵山电站库区）尚有存活斑鳖而苏州动物园的斑鳖仍不能成功繁殖的情况下，
-                  建议可考虑将苏州斑鳖带上水下无线电发射器后放入马堵山电站库区，以便让其自行寻找同类和配偶，
-                  同时对其位置和活动状况进行实时跟踪，并给予实时监控和保护，此可能是最后拯救斑鳖的唯一机会和办法。
-                </p>
-                <p>
-                  3）通过媒体和网络宣传，尽可能寻找国内外有关动物园可能饲养的，
-                  或水库、湖泊中可能放生并遗留和存活的斑鳖，一旦发现即开展人工辅助饲养繁殖。
-                </p>
-                <p>4）继续与越南协商，以谋求尽快达成合作。</p>
-                <p>
-                  作为斑鳖重要栖息地的红河流域也是我国多种重要爬行动物的集中分布地，
-                  除斑鳖以外，尚有鼋、圆鼻巨蜥、蟒蛇、山瑞鳖、大壁虎（蛤蚧）、虎纹蛙等国家一、二级重点保护野生两栖爬行动物物种，
-                  以及中华鳖、亚洲鳖等其他龟鳖类和眼镜蛇等重要两栖爬行动物物种。
-                  因此，针对斑鳖和红河流域生态环境的保护，建议：
-                </p>
-                <p>1）严格红河流域重要沙滩的保护和管理，严禁采沙；</p>
-                <p>
-                  2) 加强对红河流域水域和两岸重要生境（栖息地）的保护，以便保护斑鳖以及其他鳖类等野生动物及其栖息地，
-                  红河流域尚有鼋、山瑞鳖、中华鳖、亚洲鳖以及圆鼻巨蜥、蟒蛇、大壁虎、虎纹蛙等重要野生两栖爬行动物物种分布，而这些物种都已极其濒危；
-                </p>
-                <p>
-                  3）严格河道和库区管理：严禁使用电击和滚钩，并尽可能维持电站库区水位稳定；
-                </p>
-                <p>
-                  4）在红河流域的适当地方，建立斑鳖及其他龟鳖类物种和圆鼻巨蜥等种质资源收容、拯救和饲养繁殖增殖场。
-                </p>
-              </div>
-            </details>
-
-            <p class="footnote">
-              <strong>维护提示：</strong>如果你未来要补充新的红河调查结果，只需要在本 section 中追加新的段落 / 列表项，
-              或在 <code>&lt;details&gt;</code> 上方新建 “202X 年调查进展” 小标题即可。
-            </p>
-          </div>
-        </section>
-
-        <!-- 标本与影像：预留图片位 -->
-       <section id="gallery" class="section">
-    <h2>
-        标本与影像 · Rafetus 图库
-       <!-- 标本与影像：Rafetus 图库 -->
-<section id="gallery" class="section">
-  <h2>
-    标本与影像 · Rafetus 图库占位
-    <span class="badge">图片展区</span>
-  </h2>
-
-  <p class="section-lead">
-    这里展示少量经过授权的公开图片，后续可以按「幼体、历史个体、红河/越南个体」等分类扩展。
-    当前示例图片全部来自 Wikimedia Commons 等公开资源，仅用于非商业科普展示。
-  </p>
-
-  <div class="card card--soft">
-    <div class="card-body">
-      <div class="image-grid">
-
-        <!-- 图 1：典型近照示例（维基共享） -->
-        <div class="image-placeholder">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Rafetus_swinhoei.jpg"
-            alt="Rafetus swinhoei 正面近照（Wikimedia Commons）"
-            class="gallery-img"
-            loading="lazy"
-          />
-          <div class="meta-tag">
-            图 1：Rafetus swinhoei 正面近照示例。照片来自 Wikimedia Commons，
-            原始描述为 “Yangtze giant softshell turtle（斑鳖）”。
-          </div>
-        </div>
-
-        <!-- 图 2：越南红河流域个体 / 样本示意（预留，用你自己挑的链接替换） -->
-        <div class="image-placeholder">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/d/dd/R%C3%B9a_%C4%90%E1%BB%93ng_M%E1%BB%93.jpg"
-            alt="越南红河流域相关个体示意图"
-            class="gallery-img"
-            loading="lazy"
-          />
-          <div class="meta-tag">
-            图 2：越南红河/东默湖水系相关个体的示意照片，用于呈现红河系统斑鳖的公众印象。
-            可根据后续调查情况替换为更精确的个体影像。
-          </div>
-        </div>
-
-        <!-- 图 3：历史标本 / 动物园个体（占位，先用同一张，之后你换掉 src 即可） -->
-        <div class="image-placeholder">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Rafetus_swinhoei.jpg"
-            alt="历史圈养个体示意图"
-            class="gallery-img"
-            loading="lazy"
-          />
-          <div class="meta-tag">
-            图 3：历史圈养个体/动物园个体占位图。后续可以换成
-            「上海自然博物馆标本」「苏州动物园苏苏」或你自己拍摄的标本照片。
-          </div>
-        </div>
-
-        <!-- 图 4：eDNA / 野外调查现场（占位，同理后续替换） -->
-        <div class="image-placeholder">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Rafetus_swinhoei.jpg"
-            alt="野外调查 / eDNA 采样示意"
-            class="gallery-img"
-            loading="lazy"
-          />
-          <div class="meta-tag">
-            图 4：野外调查或 eDNA 采样的示意图占位。将来可以替换为
-            「ATP 工作人员在红河支流取样」「马堵山库区巡查」等一线工作照片。
-          </div>
-        </div>
-
+    <!-- 现状与分布 -->
+    <section id="status" class="section searchable-block" data-search-text="现状 分布 IUCN 极危 中国 越南 红河 太湖 长江">
+      <div class="section-header">
+        <h2>二、历史分布与当前状态</h2>
+        <span class="badge"><span class="badge-dot"></span>濒危概况</span>
       </div>
-
-      <p class="section-note">
-        说明：本区所有示例图片均来自公开版权资源（如 Wikimedia Commons），
-        或将来替换为经许可使用的照片。若用于正式出版或公开传播，请严格遵守原作者的授权条款，并在合适位置标注署名。
+      <p class="section-lead">
+        斑鳖曾经广泛分布于中国东部的大河与湖泊，以及中越红河系统。
+        随着 20 世纪中后期的过度捕捞、水体污染与栖息地改造，野外记录在短时间内急剧减少。
       </p>
-    </div>
-  </div>
-</section>
 
-
-        <!-- 保护行动 & 建议 -->
-        <section id="conservation" class="section">
-          <h2>
-            保护行动与未来方向
-            <span class="badge">保护 · 策略</span>
-          </h2>
-          <p class="section-lead">
-            在极少数个体残存的前提下，斑鳖保护不再是“常规物种保护”，而更像是一场跟时间赛跑的“抢救项目”。
+      <div class="two-col">
+        <div class="card">
+          <h3>2.1 历史分布（简要）</h3>
+          <ul class="clean">
+            <li><strong>中国：</strong>太湖水系、长江中下游支流，以及云南红河流域（元江—河口一线）。</li>
+            <li><strong>越南：</strong>红河下游及相关湖泊，如河内还剑湖、同墨湖、宣 khanh 湖等。</li>
+            <li><strong>栖息类型：</strong>大河主干道、缓流河段、大型水库及邻近沙滩产卵地。</li>
+          </ul>
+          <p>
+            红河系统的斑鳖是否与长江—太湖系统属于同一演化单元，一直是分类与保育讨论中的重要问题之一。
           </p>
-          <div class="card">
-            <div class="two-col">
-              <div class="card-body">
-                <h3 style="font-size:15px;margin:0 0 4px;">1. 目前仍在进行的方向（概括）</h3>
-                <ul class="list-clean">
-                  <li>
-                    <span class="bullet"></span>
-                    <strong>圈养个体健康维护：</strong>苏州动物园的雄性个体仍是极其重要的遗传资源，需要持续健康监测与体况管理。
-                  </li>
-                  <li>
-                    <span class="bullet"></span>
-                    <strong>环境 DNA（eDNA）监测：</strong>使用高灵敏度的水体 eDNA 检测方法，在越南湖泊和历史分布区寻找“隐藏个体”的线索。:contentReference[oaicite:9]{index=9}
-                  </li>
-                  <li>
-                    <span class="bullet"></span>
-                    <strong>栖息地管护：</strong>对于已知有线索的水库与河段，限制电鱼、采沙和高强度网箱养殖，尽量保证水位波动不要毁掉潜在的产卵沙滩。
-                  </li>
-                  <li>
-                    <span class="bullet"></span>
-                    <strong>跨国合作：</strong>中国与越南的科研团队、NGO 与政府部门在信息共享、调查协调与政策层面持续沟通。
-                  </li>
-                </ul>
+        </div>
 
-                <h3 style="font-size:15px;margin:10px 0 4px;">2. 极端濒危状态下的“最后一搏”思路</h3>
-                <ul class="list-clean">
-                  <li>
-                    <span class="bullet"></span>
-                    利用冻结保存的卵巢组织与精子，探索 <strong>体外受精、跨物种代孕等高风险技术路线</strong>。
-                  </li>
-                  <li>
-                    <span class="bullet"></span>
-                    如果未来再次发现健康雌性，优先考虑在安全栖息地进行
-                    <strong>接近自然的半野放繁殖</strong>，而不是单纯依赖圈养环境。
-                  </li>
-                  <li>
-                    <span class="bullet"></span>
-                    在伦理可接受的前提下，系统保留现存个体和历史标本的组织样本、DNA 与高精度 3D 数据，为未来可能的技术突破留下空间。
-                  </li>
-                </ul>
-              </div>
-
-              <div class="card-body">
-                <h3 style="font-size:15px;margin:0 0 4px;">3. 这个网站可以承担的角色</h3>
-                <ul class="list-clean">
-                  <li>
-                    <span class="bullet"></span>
-                    <strong>信息归档中心：</strong>梳理所有已公开的科学文献、媒体报道、旧照片、博物馆标本信息，形成比一般科普更完整的“斑鳖档案库”。
-                  </li>
-                  <li>
-                    <span class="bullet"></span>
-                    <strong>线索收集入口：</strong>未来可以增加“线索提交表单”，让渔民、博物馆从业者、收藏者匿名提供可疑大型鳖的照片与地点。
-                  </li>
-                  <li>
-                    <span class="bullet"></span>
-                    <strong>跨语种桥梁：</strong>用中文整理后，再逐步增加英文 / 越文摘译，让不同国家的研究者能找到相同的信息入口。
-                  </li>
-                  <li>
-                    <span class="bullet"></span>
-                    <strong>为未来项目做铺垫：</strong>无论是你后续的野生动物平台、斑鳖 NFT / 债券、巡护资助计划，
-                    这个网站都可以作为“斑鳖信息的权威起点”。
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- 研究笔记占位 -->
-        <section id="notes" class="section">
-          <h2>
-            作者历史研究笔记（占位）
-            <span class="badge">个人笔记</span>
-          </h2>
-          <p class="section-lead">
-            这一块专门留给你以后慢慢填：包括博物馆调查记录、专家沟通纪要、你自己的推断与假设等。
+        <div class="card">
+          <h3>2.2 现存个体与功能性灭绝风险</h3>
+          <ul class="clean">
+            <li>公开资料显示，目前已确认存活个体仅为：中国苏州动物园一只雄性；越南 1–2 只野外个体。</li>
+            <li>最后一只已知圈养雌性（中国）于 2019 年人工授精手术后死亡；同墨湖已确认的雌性个体则于 2023 年死亡。</li>
+            <li>在没有明确可繁殖雌性参与的情况下，物种在生物学意义上接近“功能性灭绝”。</li>
+          </ul>
+          <p>
+            目前的保育工作，一方面在抢救性保护仅存个体，另一方面使用 eDNA、访谈与长线监测寻找“尚未被确认的幸存者”。
           </p>
-          <div class="card card--soft">
-            <div class="card-body">
-              <p>
-                这里可以写成一个持续更新的“长滚动笔记”，例如：
-              </p>
-              <ul class="list-clean">
-                <li>
-                  <span class="bullet"></span>
-                  <strong>2023-XX-XX：</strong>整理苏州个体公开照片与媒体报道，确认龟壳花纹细节与体表伤痕分布。
-                </li>
-                <li>
-                  <span class="bullet"></span>
-                  <strong>2024-XX-XX：</strong>对接某博物馆，核对“Rafetus” 旧标本编号及采集地点，拍摄高清照片保存。
-                </li>
-                <li>
-                  <span class="bullet"></span>
-                  <strong>2025-XX-XX：</strong>阅读某篇法语 / 越南语文献，对红河历史捕捞记录做再整理。
-                </li>
-              </ul>
-              <p class="footnote">
-                <strong>操作提示：</strong>你以后只要在这里直接追加新的 <code>&lt;p&gt;</code> 或
-                <code>&lt;ul&gt;</code> / <code>&lt;li&gt;</code>，就能持续更新“笔记区”，不需要改动全站结构。
-              </p>
-            </div>
-          </div>
-        </section>
+        </div>
+      </div>
+    </section>
 
-        <footer class="footer">
-          本页内容综合公开文献、权威机构科普与作者（你）的调查资料，仅作非营利科普与研究归档使用。
-          未来如有新进展，可在保留历史版本的前提下继续更新。
-        </footer>
+    <!-- 时间线 -->
+    <section id="timeline" class="section searchable-block" data-search-text="时间线 历史 1873 1980 2011 2016 2019 2020 2023">
+      <div class="section-header">
+        <h2>三、斑鳖关键时间线（简化版）</h2>
+        <span class="badge"><span class="badge-dot"></span>从命名到极危</span>
+      </div>
+      <p class="section-lead">
+        下表只是一个“框架”，帮助快速理解斑鳖是如何在短短百余年内，从一个“被忽视的巨鳖”走到今天的极危边缘。
+        细节与原始引用可在文献部分继续追踪。
+      </p>
+
+      <ul class="timeline">
+        <li class="timeline-item">
+          <span class="timeline-year">1873</span>
+          Gray 根据上海附近采集的幼体标本命名 <em>Rafetus swinhoei</em>，但长期未受到足够重视。
+        </li>
+        <li class="timeline-item">
+          <span class="timeline-year">1950s–1980s</span>
+          长江流域与云南红河流域仍有稳定捕获与标本记录，个体被运往北京、上海等动物园或自然博物馆。
+        </li>
+        <li class="timeline-item">
+          <span class="timeline-year">1987</span>
+          Meylan 对软壳龟系统发育进行整理，明确了斑鳖在鳖科中的分类地位，也间接推动了后续保育讨论。
+        </li>
+        <li class="timeline-item">
+          <span class="timeline-year">2000s</span>
+          红河流域陆续减少野外记录；河内还剑湖个体“巨祖龟”成为文化与保育象征。
+        </li>
+        <li class="timeline-item">
+          <span class="timeline-year">2011</span>
+          还剑湖个体因皮肤损伤等问题被人工救护，引发国内外广泛关注；此后于 2016 年死亡。
+        </li>
+        <li class="timeline-item">
+          <span class="timeline-year">2019</span>
+          苏州动物园唯一已知圈养雌性斑鳖在人工授精后死亡，国际媒体普遍认为“世界仅剩三只斑鳖”。</li>
+        <li class="timeline-item">
+          <span class="timeline-year">2020</span>
+          越南同墨湖（Dong Mo）捕获一只大型雌性，经基因检测确认为斑鳖，为物种保育带来短暂“转机”。</li>
+        <li class="timeline-item">
+          <span class="timeline-year">2023</span>
+          同墨湖雌性个体被发现死亡，全球已知个体仅剩苏州一只雄性与越南 1–2 只可能的雄性/未知性别个体。</li>
+        <li class="timeline-item">
+          <span class="timeline-year">2020s–至今</span>
+          越南与国际团队尝试利用 eDNA 新技术在更大范围内搜索潜在个体，同时对红河与相关水系进行持续监测与威胁评估。
+        </li>
+      </ul>
+    </section>
+
+    <!-- 越南与红河部分 -->
+    <section id="vietnam" class="section searchable-block" data-search-text="越南 红河 同墨湖 宣 khanh eDNA 调查 ATP WCS">
+      <div class="section-header">
+        <h2>四、红河—越南系统与近期调查</h2>
+        <span class="badge"><span class="badge-dot"></span>重要区域</span>
+      </div>
+      <p class="section-lead">
+        深入理解斑鳖的最后栖息地，对于任何“挽救物种”的设想都至关重要。
+        红河流域及越南湖泊不仅承载了最后的个体，也集中体现了水坝、捕捞与水质变化等综合压力。
+      </p>
+
+      <div class="two-col">
+        <div class="card">
+          <h3>4.1 红河流域与云南段</h3>
+          <p>
+            20 世纪中叶至 21 世纪初，云南红河一线（元江至河口）曾是斑鳖最重要的分布区之一，既有大量捕获记录，也有动物园与博物馆标本流出。
+            随着水电开发、过度捕捞与沙滩采砂等活动加剧，当地调查自 2010 年代起已难以再获得可靠幼体与亚成体记录。
+          </p>
+          <p>
+            近年来，国内团队与国际合作项目重点关注马堵山等库区的潜在残存个体，
+            包括：访谈渔民、记录大型鳖类目击、分析历史标本来源，以及探索 eDNA 等新方法。
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>4.2 越南湖泊：同墨湖与宣 khanh</h3>
+          <ul class="clean">
+            <li>同墨湖（Dong Mo）：2020 年确认一只雌性斑鳖，2023 年死亡；湖中可能仍有至少一只大型个体。</li>
+            <li>宣 khanh 湖（Xuan Khanh）：通过 eDNA 与目击记录，被认为可能存在另一只野外斑鳖。</li>
+            <li>多个相关湖泊与红河支流持续监测中，由越南环境部门与 ATP/IMC、WCS 等机构合作推进。</li>
+          </ul>
+          <p>
+            当前的策略，更像是一场“与时间赛跑的侦探工作”：在巨大水体和复杂人类活动背景下，试图从极其微弱的线索中确认“物种是否尚存”。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 图像说明（不真正放图） -->
+    <section id="gallery" class="section searchable-block" data-search-text="标本 影像 照片 头骨 博物馆 图库 说明">
+      <div class="section-header">
+        <h2>五、标本与影像资料（说明）</h2>
+        <span class="badge"><span class="badge-dot"></span>影像整理中</span>
+      </div>
+      <p class="section-lead">
+        出于版权与工作量考虑，本页暂不直接展示具体照片，而是说明未来计划整理的图像类型与大致结构。
+        方便之后逐步替换为经授权的标本与野外照片，也方便研究者快速了解“有哪些影像方向值得关注”。
+      </p>
+
+      <div class="gallery-text-grid">
+        <div class="gallery-text-block">
+          <strong>5.1 历史标本与博物馆藏品</strong><br />
+          计划收录内容包括：19–20 世纪采自云南红河、太湖与长江流域的斑鳖标本，
+          如国内自然博物馆的完整骨架、背甲与头骨，以及欧洲与北美博物馆中可能被误标或暂存的藏品。
+          每一件标本将尽量附带采集地点、年代、原始编号与参考文献，便于后续学术追踪。
+        </div>
+
+        <div class="gallery-text-block">
+          <strong>5.2 圈养个体与野外影像</strong><br />
+          未来将按“长江—太湖圈养个体”“云南红河历史个体”“河内还剑湖个体”“同墨湖与宣 khanh 个体”
+          等类别整理公开影像与授权照片，同时附上简短说明：拍摄年份、地点、个体身份与所处情境（体检、救护、野外调查、eDNA 采样等）。
+        </div>
       </div>
 
-      <!-- 右侧：快速导航 + 搜索占位 -->
-      <aside>
-        <section class="card">
-          <div class="card-header">
-            <div class="card-title">快速跳转</div>
-            <span class="card-tag">导航</span>
+      <div class="gallery-text-grid" style="margin-top:10px;">
+        <div class="gallery-text-block">
+          <strong>5.3 形态特征与比较图解</strong><br />
+          除真实照片外，还计划整理示意图与绘制草图，例如：幼体壳纹变化、头骨特征、与近缘种
+          <em>Rafetus euphraticus</em> 和 <em>Palea steindachneri</em> 的比较等。<br />
+          这些图解将更多服务于分类、系统发育与现场识别，而非仅作为“好看”的插画。
+        </div>
+        <div class="gallery-text-block">
+          <strong>5.4 影像整理说明</strong><br />
+          本站后续所有图片都会在说明中标明来源、作者与授权方式，不使用来路不明或侵权风险较高的图片。
+          目前阶段，以文字为主，逐步补齐图像，是出于对原作者与物种本身的尊重。
+        </div>
+      </div>
+    </section>
+
+    <!-- 文献资料库 -->
+    <section id="literature" class="section searchable-block" data-search-text="文献 论文 参考 研究 Meylan 1987 Le Duc 2020 threat analysis eDNA">
+      <div class="section-header">
+        <h2>六、文献与资料库（精选索引）</h2>
+        <span class="badge"><span class="badge-dot"></span>科研入口</span>
+      </div>
+      <p class="section-lead">
+        本节仅做“索引”而非全文转载，方便读者从一个页面跳转到核心文献及项目页面。
+        大部分原文为英文，需要科学文献数据库或机构访问权限。
+      </p>
+
+      <div class="two-col">
+        <div class="card">
+          <h3>6.1 基础分类与系统发育</h3>
+          <ul class="ref-list">
+            <li class="ref-item">
+              <span class="label">经典</span>
+              Meylan, P. A. (1987). <em>The phylogenetic relationships of soft-shelled turtles.</em>
+             （软壳龟系统发育研究，明确了 <em>Rafetus swinhoei</em> 在鳖科中的位置）<br />
+              链接（PDF）：<a href="https://iucn-tftsg.org/wp-content/uploads/file/Articles/Meylan_1987.pdf" target="_blank" rel="noopener">iucn-tftsg.org / Meylan_1987.pdf</a>
+            </li>
+            <li class="ref-item">
+              <span class="label">百科</span>
+              <em>Yangtze giant softshell turtle (Rafetus swinhoei)</em> – 维基百科条目。<br />
+              链接：<a href="https://en.wikipedia.org/wiki/Yangtze_giant_softshell_turtle" target="_blank" rel="noopener">Wikipedia: Yangtze giant softshell turtle</a>
+            </li>
+          </ul>
+
+          <h3 style="margin-top:10px;">6.2 分布与新地点记录</h3>
+          <ul class="ref-list">
+            <li class="ref-item">
+              <span class="label">越南</span>
+              Le Duc, O. et al. (2020). <em>A new locality of presence for the world's rarest turtle, Rafetus swinhoei, in Vietnam.</em><br />
+              链接：<a href="https://www.sciencedirect.com/science/article/abs/pii/S1617138120300790" target="_blank" rel="noopener">ScienceDirect: New locality in Vietnam</a>
+            </li>
+            <li class="ref-item">
+              <span class="label">访谈调查</span>
+              Platt, S. G. et al. (2023). <em>An interview-based survey to investigate the occurrence of Swinhoe's Giant Softshell Turtle in potential habitats.</em><br />
+              链接：<a href="https://library.wcs.org/fr-fr/Scientific-Research/Research-Publications/Publications-Library/ctl/view/mid/40093/pubid/DMX4934500000.aspx" target="_blank" rel="noopener">WCS Publications Database</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>6.3 威胁分析与保育建议</h3>
+          <ul class="ref-list">
+            <li class="ref-item">
+              <span class="label">威胁分析</span>
+              Luiselli, L. et al. (2024). <em>A threat analysis for the world's most threatened turtle, Rafetus swinhoei.</em><br />
+              链接：<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4696278" target="_blank" rel="noopener">SSRN: Threat analysis</a>
+            </li>
+            <li class="ref-item">
+              <span class="label">项目页</span>
+              The Rafetus swinhoei Project – Asian Turtle Program / IMC.<br />
+              链接：<a href="https://asianturtleprogram.org/rafetus-project/" target="_blank" rel="noopener">asianturtleprogram.org / rafetus-project</a>
+            </li>
+            <li class="ref-item">
+              <span class="label">WCS</span>
+              Wildlife Conservation Society – <em>Yangtze Giant Softshell Turtle</em> 物种页。<br />
+              链接：<a href="https://oneworldonehealth.wcs.org/Wildlife/Reptiles-and-Amphibians/Yangtze-Giant-Softshell-Turtle.aspx" target="_blank" rel="noopener">WCS: Yangtze Giant Softshell Turtle</a>
+            </li>
+          </ul>
+
+          <h3 style="margin-top:10px;">6.4 eDNA 与新技术</h3>
+          <ul class="ref-list">
+            <li class="ref-item">
+              <span class="label">eDNA</span>
+              近期多篇关于在宣 khanh 等湖泊使用 eDNA 检测斑鳖 DNA 的论文与科普文章，包括 2025 年前后对便携式 eDNA 设备的介绍。<br />
+              示例报道：<a href="https://phys.org/news/2025-01-portable-edna-rare-softshell-turtle.html" target="_blank" rel="noopener">Phys.org: Portable eDNA test</a>
+              ；<a href="https://www.discoverwildlife.com/animal-facts/reptiles/swinhoes-softshell-turtle-edna" target="_blank" rel="noopener">Discover Wildlife: Time is ticking</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 越南与全球新闻 -->
+    <section id="news" class="section searchable-block" data-search-text="新闻 越南 同墨湖 雌性 死亡 eDNA 2020 2023 2025">
+      <div class="section-header">
+        <h2>七、越南与全球新闻（近年节选）</h2>
+        <span class="badge"><span class="badge-dot"></span>媒体观察</span>
+      </div>
+      <p class="section-lead">
+        本节并非“实时新闻流”，而是从近十余年的公开报道中，挑出对理解斑鳖现状有代表性的几个节点。
+        完整新闻需要访问原网站阅读。
+      </p>
+
+      <ul class="news-list">
+        <li class="news-item">
+          <div class="news-meta">2020-12 · WCS / ATP</div>
+          <div><strong>“世界上最濒危的龟类迎来一些好消息”</strong></div>
+          <div>
+            WCS 与亚洲龟类计划宣布：2020 年 10 月在越南同墨湖捕获的一只大型雌性，经基因检测确认是
+            <em>Rafetus swinhoei</em>。意味着世界上至少已知有“一雄一雌”两只个体仍存活，一度被视为物种最后的转机。<br />
+            链接：<a href="https://newsroom.wcs.org/News-Releases/articleType/ArticleView/articleId/15641/Worlds-Most-Endangered-Turtle-Gets-Some-Good-News-In-2020.aspx" target="_blank" rel="noopener">WCS Newsroom</a>
           </div>
-          <div class="card-body">
-            <div class="side-section-title">主要板块</div>
-            <ul class="side-nav-list">
-              <li>
-                <a href="#overview" class="side-nav-link">
-                  <span><span style="opacity:.6;">●</span> 斑鳖基础百科</span>
-                  <small>概览</small>
-                </a>
-              </li>
-              <li>
-                <a href="#timeline" class="side-nav-link">
-                  <span><span style="opacity:.6;">●</span> 历史时间线</span>
-                  <small>关键年份</small>
-                </a>
-              </li>
-              <li>
-                <a href="#gallery" class="side-nav-link">
-                  <span><span style="opacity:.6;">●</span> 标本与影像</span>
-                  <small>图片位</small>
-                </a>
-              </li>
-              <li>
-                <a href="#red-river" class="side-nav-link">
-                  <span><span style="opacity:.6;">●</span> 红河与云南</span>
-                  <small>深度</small>
-                </a>
-              </li>
-              <li>
-                <a href="#conservation" class="side-nav-link">
-                  <span><span style="opacity:.6;">●</span> 保护行动</span>
-                  <small>策略</small>
-                </a>
-              </li>
-              <li>
-                <a href="#notes" class="side-nav-link">
-                  <span><span style="opacity:.6;">●</span> 作者研究笔记</span>
-                  <small>个人</small>
-                </a>
-              </li>
-            </ul>
+        </li>
 
-            <div class="search-box">
-              <div class="side-section-title" style="margin-top:10px;">站内搜索（预留）</div>
-              <div class="search-input-wrap">
-                <span style="font-size:13px;opacity:.7;">🔍</span>
-                <input
-                  type="search"
-                  placeholder="未来可搜索：文章标题 / 地点 / 年份…"
-                  disabled
-                />
-              </div>
-              <div class="search-hint">
-                目前为占位样式。将来你可以用简单的 JavaScript 或站外搜索（例如 Google CSE）
-                来实现真正的搜索功能。
-              </div>
-            </div>
-
-
-            <div style="margin-top:14px;">
-              <div class="side-section-title">标签参考（示例）</div>
-              <div class="tag-row">
-                <span class="tag"># 红河流域</span>
-                <span class="tag"># 苏州个体</span>
-                <span class="tag"># 越南东莫湖</span>
-                <span class="tag"># 标本调查</span>
-                <span class="tag"># eDNA</span>
-                <span class="tag"># 功能性灭绝</span>
-              </div>
-            </div>
+        <li class="news-item">
+          <div class="news-meta">2021-01 · The Guardian</div>
+          <div><strong>“发现雌性后，人类对最濒危龟类重燃希望”</strong></div>
+          <div>
+            英国媒体报道同墨湖雌性个体的确认结果，强调这是“世界上最濒危龟类”的一次关键发现，并提到宣 khanh
+            湖可能存在的另一只大型个体。<br />
+            链接：<a href="https://www.theguardian.com/environment/2021/jan/01/hopes-for-most-endangered-turtle-after-discovery-of-female-in-vietnam-lake" target="_blank" rel="noopener">The Guardian</a>
           </div>
-        </section>
-      </aside>
-    </main>
-  </div>
+        </li>
+
+        <li class="news-item">
+          <div class="news-meta">2023-05 · LiveScience / Mongabay 等</div>
+          <div><strong>“同墨湖雌性死亡：‘最后的雌性’不再”</strong></div>
+          <div>
+            多家媒体在 2023 年报道同墨湖雌性个体死亡的消息，称其为“已知最后一只雌性斑鳖”。
+            报道指出，目前已知个体仅剩苏州一只雄性与越南 1–2 只雄性或未知性别个体。<br />
+            示例链接：<a href="https://www.livescience.com/animals/turtles/largest-freshwater-turtle-species-doomed-to-extinction-after-last-female-washes-up-dead" target="_blank" rel="noopener">LiveScience 报道</a>
+          </div>
+        </li>
+
+        <li class="news-item">
+          <div class="news-meta">2024–2025 · 科学与科普报道</div>
+          <div><strong>“便携式 eDNA 检测与‘重新发现’的可能性”</strong></div>
+          <div>
+            2024–2025 年多篇报道介绍了针对 <em>Rafetus swinhoei</em> 的 eDNA 检测进展，包括在宣 khanh
+            湖等地采集水样并检测微量 DNA，以期在不直接目击个体的前提下确认其存在。尽管技术尚有局限，但为“寻找最后的幸存者”提供了新的工具。<br />
+            例：<a href="https://phys.org/news/2025-01-portable-edna-rare-softshell-turtle.html" target="_blank" rel="noopener">Phys.org</a> / <a href="https://www.discoverwildlife.com/animal-facts/reptiles/swinhoes-softshell-turtle-edna" target="_blank" rel="noopener">Discover Wildlife</a>
+          </div>
+        </li>
+
+        <li class="news-item">
+          <div class="news-meta">回顾 · 2016–2019</div>
+          <div><strong>“还剑湖巨祖龟去世与苏州雌性死亡”</strong></div>
+          <div>
+            2016 年河内还剑湖“巨祖龟”死亡；2019 年苏州动物园雌性斑鳖在人工授精后死亡，这两则消息标志着两个国家文化与保育象征的先后陨落，也让“仅剩三只斑鳖”“仅剩两只斑鳖”这种表述不断出现。
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 作者笔记 -->
+    <section id="notes" class="section searchable-block" data-search-text="作者笔记 研究 日志 标本 访谈 红河 越南 文献">
+      <div class="section-header">
+        <h2>八、作者研究笔记（长期更新）</h2>
+        <span class="badge"><span class="badge-dot"></span>个人视角</span>
+      </div>
+      <p class="section-lead">
+        这一部分不是“权威结论”，而是作者在查阅文献、联系专家、整理历史标本与关注越南动态过程中的一些阶段性记录。
+        它更多展示的是思路与问题，而不是“已经完成的研究结果”。
+      </p>
+
+      <div class="notes-grid">
+        <article class="note-card">
+          <h3 class="note-title">笔记一：从 19 世纪标本开始的“档案追踪”</h3>
+          <div class="note-meta">记录主题：早期标本、编号与流向 · 状态：持续补充</div>
+          <p>
+            斑鳖被正式命名已经 150 年，但今天回头看，我们对许多早期标本的来龙去脉仍然不清楚：有的只留下模糊的“上海”“云南采集”字样，有的在博物馆搬迁中更改了编号，还有的甚至在数据库中被误标为其他物种。
+          </p>
+          <p>
+            这一块的工作更像是在做“物种档案管理”：逐一核对各大博物馆与研究所的旧藏，
+            试图把采集时间、地点、采集者、旧编号、新编号与后来引用它的论文重新连起来。
+            在斑鳖这样只剩下极少数个体的物种上，每一块标本其实都相当于一份不可替代的历史证词。
+          </p>
+        </article>
+
+        <article class="note-card">
+          <h3 class="note-title">笔记二：红河现场信息与“沉默的河段”</h3>
+          <div class="note-meta">记录主题：云南红河、马堵山库区与地方记忆 · 状态：持续补充</div>
+          <p>
+            与越南近年的东墨湖、宣 khanh 湖相比，云南红河流域的斑鳖更像是“消失得过于安静”的那一支。
+            文献里写着 20 世纪五六十年代“大型鳖类常见”“每年都有捕获”，但进入 21 世纪后，当地渔民与电站职工谈起大鳖时，大多只能指向“很久以前”的某几件事。
+          </p>
+          <p>
+            这一部分笔记尝试记录：哪些旧照片、口述记忆与博物馆标本能够互相印证；
+            哪些河段在修坝、采砂之后已经不再具备产卵沙滩；以及在现实资源极其有限的情况下，哪些点位仍值得优先使用 eDNA 或长期相机监测。
+          </p>
+        </article>
+
+        <article class="note-card">
+          <h3 class="note-title">笔记三：越南个体与 eDNA 技术的机会与局限</h3>
+          <div class="note-meta">记录主题：Dong Mo / Xuan Khanh 与 eDNA 方法 · 状态：持续补充</div>
+          <p>
+            同墨湖雌性的发现与死亡，几乎在短短三年内完成了从“奇迹”到“噩耗”的情绪过山车。
+            在这期间，eDNA 常被媒体描述成一种“可以在泥水里找到最后一只龟”的神奇技术，但实际操作远比想象中困难：水体巨大、个体极少、样本容易被稀释或降解。
+          </p>
+          <p>
+            这些笔记尝试在“技术乐观”与“现实冷静”之间找到一个平衡：既不过分夸大某种方法，也不否定它可能带来的突破。
+            斑鳖的故事本身就是现代保育难题的一个极端例子：当物种已经几乎从世界上消失时，我们还能做什么，才算是真正负责任的努力？
+          </p>
+        </article>
+      </div>
+
+      <p class="search-result-hint" id="searchHint">
+        当前搜索词只会在本页内筛选与高亮模块；若想查看最新科研或新闻，请继续通过文献链接访问原始来源。
+      </p>
+    </section>
+
+    <footer class="site-footer">
+      本页为个人整理的斑鳖资料档案，旨在为公众、爱好者与研究者提供一个中文入口。<br />
+      如需引用或转载，请同时查阅原始文献与项目页面，并尊重相关图片与数据的版权与使用条款。
+    </footer>
+  </main>
+
+  <script>
+    // 滚动到指定 section
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      window.scrollTo({
+        top: el.getBoundingClientRect().top + window.scrollY - 80,
+        behavior: "smooth",
+      });
+    }
+
+    // 简单站内搜索：按文本筛选各模块
+    (function () {
+      const input = document.getElementById("siteSearch");
+      const blocks = Array.from(
+        document.querySelectorAll(".searchable-block")
+      );
+      const hint = document.getElementById("searchHint");
+
+      function applySearch(term) {
+        const q = term.trim().toLowerCase();
+        if (!q) {
+          blocks.forEach((b) => b.classList.remove("search-hidden"));
+          if (hint) hint.classList.remove("active");
+          return;
+        }
+        blocks.forEach((b) => {
+          const text =
+            (b.dataset.searchText || b.textContent || "").toLowerCase();
+          if (text.indexOf(q) !== -1) {
+            b.classList.remove("search-hidden");
+          } else {
+            b.classList.add("search-hidden");
+          }
+        });
+        if (hint) hint.classList.add("active");
+      }
+
+      if (input) {
+        input.addEventListener("input", (e) => {
+          // 实时预览
+          applySearch(e.target.value);
+        });
+        input.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            applySearch(e.target.value);
+          }
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
