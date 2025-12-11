@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap:
-https://chen13611418050-art.github.io/-Rafetus-Info-/sitemap.xml
+Sitemap: https://chen13611418050-art.github.io/-Rafetus-Info-/sitemap.xml
